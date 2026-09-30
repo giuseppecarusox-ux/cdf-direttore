@@ -1,0 +1,16 @@
+{
+  "name": "CDF · Sostituzione Direttore Responsabile",
+  "short_name": "CDF Direttore",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "fullscreen",
+  "display_override": [
+    "fullscreen",
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "background_color": "#f4f8f9",
+  "theme_color": "#0d5f6b",
+  "description": "Gestione completa pratica sostituzione Direttore Responsabile: ASP, Regione, moduli, allegati e inoltri."
+}

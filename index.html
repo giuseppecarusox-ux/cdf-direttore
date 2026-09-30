@@ -1,0 +1,1567 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CDF · Sostituzione Direttore Responsabile</title>
+<meta name="theme-color" content="#0d5f6b">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CDF Direttore">
+<link rel="manifest" href="manifest.webmanifest">
+
+<style>
+:root{
+  --ink:#14323a; --muted:#667b81; --line:#dce7e9; --bg:#f4f8f9; --card:#fff;
+  --brand:#0d5f6b; --brand2:#0b7c89; --ok:#168a57; --warn:#a96a00; --danger:#b42318;
+  --shadow:0 10px 30px rgba(16,52,60,.09); --radius:18px;
+}
+*{box-sizing:border-box} body{margin:0;font:15px/1.45 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+button,input,select,textarea{font:inherit} a{color:var(--brand)}
+.app{max-width:1320px;margin:auto;padding:18px}
+.hero{background:linear-gradient(135deg,#0b5964,#0e7884);color:#fff;padding:22px;border-radius:24px;box-shadow:var(--shadow);position:sticky;top:0;z-index:20}
+.hero h1{margin:0 0 5px;font-size:clamp(23px,4vw,34px)} .hero p{margin:0;opacity:.92}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.btn{border:0;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;background:#e8f1f3;color:var(--ink)}
+.btn.primary{background:#fff;color:var(--brand)} .btn.brand{background:var(--brand);color:#fff}.btn.ok{background:var(--ok);color:#fff}.btn.warn{background:#fff2d8;color:#714700}
+.btn.outline{background:transparent;border:1px solid #bcd0d4;color:var(--brand)}
+.nav{display:flex;gap:8px;overflow:auto;padding:14px 0 8px;position:sticky;top:142px;z-index:15;background:var(--bg)}
+.nav button{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 13px;cursor:pointer;font-weight:700}
+.nav button.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+.tab{display:none}.tab.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.col-12{grid-column:span 12}.col-8{grid-column:span 8}.col-6{grid-column:span 6}.col-4{grid-column:span 4}.col-3{grid-column:span 3}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);margin:12px 0}
+.card h2,.card h3{margin:0 0 12px}.card h2{font-size:20px}.card h3{font-size:16px}
+label{display:block;font-size:12px;font-weight:800;color:#4a6269;margin-bottom:5px}
+input,select,textarea{width:100%;border:1px solid #cfdde0;border-radius:10px;padding:10px 11px;background:#fff;color:var(--ink);outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--brand2);box-shadow:0 0 0 3px rgba(11,124,137,.12)}
+textarea{min-height:105px;resize:vertical}.field{margin-bottom:11px}
+.note{background:#eef7f8;border-left:4px solid var(--brand2);padding:12px 14px;border-radius:10px;color:#31555c}
+.warning{background:#fff6e6;border-left:4px solid #d48b00;padding:12px 14px;border-radius:10px}
+.status{display:flex;gap:8px;flex-wrap:wrap}.pill{border-radius:999px;padding:6px 10px;background:#eef3f4;font-size:12px;font-weight:800}.pill.ok{background:#e7f6ee;color:#12613f}.pill.warn{background:#fff0d5;color:#774c00}
+.step{display:grid;grid-template-columns:42px 1fr;gap:12px;align-items:start;margin:12px 0}.num{height:38px;width:38px;border-radius:50%;display:grid;place-items:center;background:var(--brand);color:white;font-weight:900}
+.checkline{display:flex;gap:9px;align-items:flex-start;margin:9px 0}.checkline input{width:auto;margin-top:3px}
+.docbox{border:1px dashed #a8c0c5;background:#fbfdfd;border-radius:14px;padding:14px;margin:12px 0}
+.dochead{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.pre{white-space:pre-wrap;background:#f7fafb;border:1px solid var(--line);border-radius:12px;padding:14px;max-height:470px;overflow:auto}
+.small{font-size:12px;color:var(--muted)} .right{text-align:right}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.drop{border:2px dashed #9ab8bd;border-radius:16px;padding:28px;text-align:center;background:#f8fbfc}
+.attach{display:grid;grid-template-columns:1fr auto;gap:8px;border:1px solid var(--line);border-radius:12px;padding:10px;margin:8px 0;background:#fff}
+.attach-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.attach-actions label{display:inline-flex;gap:4px;align-items:center;margin:0;font-size:12px}.attach-actions input{width:auto}
+table{width:100%;border-collapse:collapse} th,td{text-align:left;padding:9px;border-bottom:1px solid var(--line);vertical-align:top} th{font-size:12px;color:#52696f}
+summary{cursor:pointer;font-weight:800}
+.footer{padding:30px 5px;color:var(--muted);font-size:12px}
+.print-doc{display:none}
+
+html,body{min-height:100%;overscroll-behavior:none}
+body{background:#eef3f4}
+body.app-fullscreen{background:#eef3f4}
+.app{max-width:none;padding:0;min-height:100vh}
+.hero{border-radius:0;position:sticky;top:0;padding-top:max(14px,env(safe-area-inset-top));}
+.nav{padding-left:10px;padding-right:10px}
+.tab{padding:0 10px}
+.footer{padding-bottom:max(30px,env(safe-area-inset-bottom))}
+
+.app-home-shortcuts{display:grid;grid-template-columns:repeat(7,minmax(110px,1fr));gap:10px;padding:10px}
+.app-home-shortcuts button{border:1px solid var(--line);background:#fff;border-radius:16px;padding:14px;text-align:left;box-shadow:var(--shadow);cursor:pointer;color:var(--ink)}
+.app-home-shortcuts span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:9px;background:var(--brand);color:#fff;font-weight:900;margin-bottom:8px}
+.app-home-shortcuts b{display:block;font-size:15px;margin-bottom:3px}
+.app-home-shortcuts small{display:block;color:var(--muted);font-size:11px;line-height:1.3}
+@media(max-width:900px){.app-home-shortcuts{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.app-home-shortcuts{grid-template-columns:repeat(2,1fr);gap:8px}.app-home-shortcuts button{padding:12px}}
+
+.appmode-badge{display:inline-flex;align-items:center;gap:6px}
+.appmode-badge::before{content:"●";font-size:8px}
+.print-preview-overlay{position:fixed;inset:0;background:#dfe6e8;z-index:100000;display:none;overflow:auto}
+.print-preview-overlay.open{display:block}
+.print-preview-toolbar{position:sticky;top:0;z-index:3;display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px;background:#26383e;color:#fff}
+.print-preview-toolbar .btn{background:#fff;color:#26383e}
+.print-preview-toolbar .btn.ok{background:#168a57;color:#fff}
+.print-preview-title{font-weight:900;margin-right:auto}
+.print-preview-shell{max-width:900px;margin:16px auto;padding:0 8px 50px}
+.print-preview-paper{background:#fff;box-shadow:0 8px 28px #0002;padding:18mm;color:#111;font:12pt/1.45 Arial,sans-serif;min-height:1100px}
+.print-preview-paper h1{font-size:17pt;text-align:center}
+.print-preview-paper .official{text-align:center;font-weight:bold;line-height:1.35}
+.print-preview-paper table{border-collapse:collapse;width:100%;margin:12px 0}
+.print-preview-paper th,.print-preview-paper td{border:1px solid #aaa;padding:7px;text-align:left;vertical-align:top}
+.print-preview-paper th{width:31%;background:#f2f2f2}
+@media(max-width:650px){
+ .print-preview-toolbar .btn{flex:1 1 43%;padding:9px 10px;font-size:13px}
+ .print-preview-title{width:100%}
+ .print-preview-shell{margin:6px auto;padding:0 3px 30px}
+ .print-preview-paper{padding:10mm 6mm;min-height:0;box-shadow:none;font-size:11.2pt}
+}
+
+
+.preview-overlay{position:fixed;inset:0;background:#eef3f4;z-index:99999;display:none;overflow:auto}
+.preview-overlay.open{display:block}
+.preview-toolbar{position:sticky;top:0;z-index:5;background:#14323a;color:#fff;padding:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;box-shadow:0 4px 16px #0002}
+.preview-toolbar .btn{background:#fff;color:#14323a}
+.preview-toolbar .btn.ok{background:#168a57;color:#fff}
+.preview-toolbar .btn.warn{background:#fff2d8;color:#714700}
+.preview-title{font-weight:900;margin-right:auto}
+.preview-shell{max-width:960px;margin:18px auto;padding:0 10px 60px}
+.preview-paper{background:#fff;box-shadow:0 8px 30px #0002;min-height:1120px;padding:18mm;color:#111;font:12.5pt/1.45 Arial,sans-serif;outline:none}
+.preview-paper:focus{box-shadow:0 8px 30px #0002,0 0 0 3px rgba(11,124,137,.18)}
+.preview-paper h1{font-size:17pt;text-align:center;margin:20px 0}
+.preview-paper h3{margin-top:22px}
+.preview-paper .official{text-align:center;font-weight:bold;line-height:1.35}
+.preview-paper table{border-collapse:collapse;width:100%;margin:12px 0}
+.preview-paper th,.preview-paper td{border:1px solid #aaa;padding:7px;text-align:left;vertical-align:top}
+.preview-paper th{width:31%;background:#f2f2f2}
+.preview-paper .noteprint{font-size:9pt;color:#555;border-top:1px solid #bbb;padding-top:8px;margin-top:28px}
+.preview-hint{max-width:960px;margin:10px auto 0;padding:0 10px;color:#4d6167;font-size:12px}
+@media(max-width:650px){
+ .preview-toolbar{gap:6px;padding:8px}
+ .preview-toolbar .btn{padding:9px 10px;font-size:13px;flex:1 1 43%}
+ .preview-title{width:100%;margin:0 0 2px}
+ .preview-shell{margin:8px auto;padding:0 4px 40px}
+ .preview-paper{padding:12mm 7mm;min-height:0;font-size:11.5pt;box-shadow:none}
+}
+
+
+.location-fields{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;margin-top:2px}
+.location-fields .field{flex:1 1 var(--smart-basis,180px);min-width:var(--smart-min,130px);max-width:100%}
+.location-fields .field.compact{flex:0 1 var(--smart-basis,110px)}
+.location-fields .field.smart-grow{transition:flex-basis .15s ease}
+.save-indicator{display:inline-flex;align-items:center;gap:6px}
+.save-indicator::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.85}
+.extra-drop{background:#fffaf1;border-color:#d5b46d}
+.file-note{min-width:180px;max-width:320px;padding:7px 9px}
+.attach-title{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.attach-badge{font-size:11px;font-weight:800;border-radius:999px;padding:3px 7px;background:#eef3f4;color:#52696f}
+.attach-badge.extra{background:#fff0d5;color:#774c00}
+.storage-box{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}
+
+.auth-fields{display:grid;grid-template-columns:minmax(240px,1.35fr) minmax(230px,1.15fr) minmax(120px,.55fr) minmax(155px,.68fr) minmax(190px,.9fr);gap:12px;align-items:end}
+.auth-fields .field{margin-bottom:0;min-width:0}
+.auth-fields input[type="date"]{min-width:145px}
+.dispatch-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.dispatch-targets{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.dispatch-target{border:1px solid var(--line);background:#fff;border-radius:16px;padding:14px;cursor:pointer;text-align:left}
+.dispatch-target.active{border:2px solid var(--brand);background:#eef8f9}
+.dispatch-target b{display:block;margin-bottom:3px}
+.dispatch-target small{color:var(--muted)}
+.pack-docs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.pack-item{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:10px;background:#fff}
+.pack-item input{width:auto;margin-top:3px}
+.dispatch-file{display:grid;grid-template-columns:28px 1fr auto;gap:9px;align-items:center;border-bottom:1px solid var(--line);padding:8px 0}
+.dispatch-file input{width:auto}
+.dispatch-summary{background:#f7fafb;border:1px solid var(--line);border-radius:14px;padding:12px}
+.dispatch-actions{display:flex;gap:8px;flex-wrap:wrap}
+.dispatch-actions .btn{flex:1 1 180px}
+.badge-dest{display:inline-block;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:800;background:#e8f1f3}
+@media(max-width:980px){
+ .auth-fields{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .auth-fields .field:first-child,.auth-fields .field:nth-child(2){grid-column:span 2}
+ .dispatch-targets{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+ .auth-fields{grid-template-columns:1fr 1fr;gap:9px}
+ .auth-fields .field:first-child,.auth-fields .field:nth-child(2),.auth-fields .field:nth-child(5){grid-column:span 2}
+ .auth-fields input[type="date"]{min-width:0}
+ .pack-docs{grid-template-columns:1fr}
+ .dispatch-grid{display:block}
+}
+
+
+@media(max-width:850px){
+  .app{padding:10px}.hero{position:relative}.nav{top:0}.col-8,.col-6,.col-4,.col-3{grid-column:span 12}
+  .toolbar .btn{flex:1 1 42%}.card{padding:14px}.nav{position:sticky}
+  .location-fields .field{min-width:min(100%,170px)}
+  .location-fields .field.compact{flex:1 1 110px;min-width:95px}
+}
+@media print{
+  body{background:white}.hero,.nav,.screen-only{display:none!important}.card{box-shadow:none;border:0}.tab{display:block!important}
+}
+</style>
+</head>
+<body class="app-fullscreen">
+<div class="app">
+  <header class="hero">
+    <h1>CDF · Sostituzione Direttore Responsabile</h1>
+    <p>Pratica guidata ASP Messina + Regione Siciliana · compilazione automatica · allegati · archivio · PDF/EML</p>
+    <div class="status" style="margin-top:10px">
+      <span class="pill ok" id="regenStatus">✓ Documenti sincronizzati con i dati</span>
+      <span class="pill ok save-indicator" id="saveStatus">Salvataggio automatico attivo</span>
+      <span class="pill" id="storageStatus">Archivio locale</span>
+    </div>
+    <div class="toolbar">
+      <button class="btn primary" onclick="saveAll()">💾 Salva pratica</button>
+      <button class="btn primary" onclick="exportArchive()">📦 Esporta pratica completa</button>
+      <label class="btn primary" style="display:inline-block">📥 Importa pratica<input id="importArchive" type="file" accept=".json,application/json" hidden></label>
+      <button class="btn primary" onclick="printSummary()">🖨️ Riepilogo / PDF</button>
+                  <button class="btn primary" onclick="resetPractice()">🧹 Nuova pratica</button>
+    </div>
+  </header>
+
+  <nav class="nav screen-only" id="nav">
+    <button data-tab="home" class="active">Dashboard</button>
+    <button data-tab="dati">1 · Dati</button>
+    <button data-tab="asp">2 · ASP Messina</button>
+    <button data-tab="regione">3 · Regione</button>
+    <button data-tab="moduli">4 · Moduli 3–7</button>
+    <button data-tab="allegati">5 · Allegati</button>
+    <button data-tab="inoltri">6 · Centro Inoltri</button>
+    <button data-tab="archivio">7 · Archivio</button>
+  </nav>
+
+<div class="screen-only app-home-shortcuts">
+  <button onclick="goTab('dati')"><span>1</span><b>Dati</b><small>Struttura, legale rappresentante e direttore</small></button>
+  <button onclick="goTab('asp')"><span>2</span><b>ASP</b><small>PEC e pratica autorizzativa</small></button>
+  <button onclick="goTab('regione')"><span>3</span><b>Regione</b><small>Servizio 8 e accreditamento</small></button>
+  <button onclick="goTab('moduli')"><span>4</span><b>Moduli</b><small>3, 4, 5, 6 e 7</small></button>
+  <button onclick="goTab('allegati')"><span>5</span><b>Allegati</b><small>Principali ed extra</small></button>
+  <button onclick="goTab('inoltri')"><span>6</span><b>Inoltri</b><small>Pacchetto PEC e destinatari terzi</small></button>
+  <button onclick="goTab('archivio')"><span>7</span><b>Archivio</b><small>Backup, importazione e PDF</small></button>
+</div>
+
+  <section class="tab active" id="tab-home">
+    <div class="grid">
+      <div class="col-8 card">
+        <h2>Procedura schematizzata</h2>
+        <div class="step"><div class="num">1</div><div><b>Compila i dati una sola volta</b><br><span class="small">Struttura, legale rappresentante, nuovo Direttore Responsabile e dati della variazione.</span></div></div>
+        <div class="step"><div class="num">2</div><div><b>ASP Messina</b><br><span class="small">Genera la comunicazione/istanza per la variazione organizzativa e l’aggiornamento dell’autorizzazione sanitaria. Allega i documenti selezionati per ASP.</span></div></div>
+        <div class="step"><div class="num">3</div><div><b>Regione Siciliana · Servizio 8</b><br><span class="small">Dopo l’acquisizione/aggiornamento dell’autorizzazione sanitaria, se richiesta, genera l’istanza relativa alla permanenza dei requisiti di accreditamento e completa i Mod. 3, 4, 5, 6 e 7.</span></div></div>
+        <div class="step"><div class="num">4</div><div><b>Firma e invia</b><br><span class="small">Stampa in PDF, firma dove necessario e crea la PEC in formato .EML con gli allegati selezionati.</span></div></div>
+      </div>
+      <div class="col-4 card">
+        <h2>Destinatari</h2>
+        <div class="field"><label>ASP Messina · PEC</label><input id="aspPec" data-save value="protocollogenerale@pec.asp.messina.it"></div>
+        <div class="field"><label>Regione Siciliana · Servizio 8 · PEC</label><input id="regPec" data-save value="dipartimento.pianificazione.strategica@certmail.regione.sicilia.it"></div>
+        <div class="status"><span class="pill ok">ASP</span><span class="pill ok">Servizio 8</span><span class="pill warn">Controlla firme</span></div>
+      </div>
+    </div>
+    <div class="card note">
+      <b>Fonte procedurale:</b> il Servizio 8 della Regione include le <b>modifiche dell’assetto organizzativo</b> nel Punto 3 e richiede i Mod. 3, 4, 5, 6 e 7. Questa app compila automaticamente una versione di lavoro/stampa basata sui dati della pratica e mantiene sempre il collegamento ai file Word ufficiali. Prima della firma definitiva confronta la versione generata con il modulo ufficiale vigente.
+    </div>
+  </section>
+
+  <section class="tab" id="tab-dati">
+    <div class="card">
+      <h2>Dati struttura</h2>
+      <div class="grid">
+        <div class="col-8 field"><label>Denominazione completa</label><input id="strDen" data-save value="C.D.F. CENTRO DIAGNOSTICO FIORELLO S.A.S. ANALISI CLINICHE DI FIORELLO SANTINA"></div>
+        <div class="col-4 field"><label>Nome breve</label><input id="strShort" data-save value="Centro Diagnostico Fiorello"></div>
+        <div class="col-4 field"><label>Codice fiscale</label><input id="strCf" data-save placeholder="Inserire"></div>
+        <div class="col-4 field"><label>Partita IVA</label><input id="strPiva" data-save placeholder="Inserire"></div>
+        <div class="col-4 field"><label>REA</label><input id="strRea" data-save value="ME-174645"></div>
+        <div class="col-12 field"><label>Indirizzo sede (via/piazza e numero civico)</label><input id="strAddr" data-save placeholder="Via/Piazza e numero civico"></div>
+        <div class="col-12">
+          <div class="location-fields">
+            <div class="field smart-grow" id="wrap-strComune" style="--smart-min:190px"><label>Comune</label><input id="strComune" data-save data-smart-size value="Capo d’Orlando"></div>
+            <div class="field smart-grow" id="wrap-strProvincia" style="--smart-min:155px"><label>Provincia</label><input id="strProvincia" data-save data-smart-size value="Messina"></div>
+            <div class="field compact" style="--smart-basis:92px;--smart-min:88px"><label>Sigla</label><input id="strSiglaProv" data-save maxlength="2" value="ME"></div>
+            <div class="field compact" style="--smart-basis:108px;--smart-min:102px"><label>CAP</label><input id="strCap" data-save inputmode="numeric" maxlength="5" value="98071"></div>
+            <div class="field compact" style="--smart-basis:145px;--smart-min:135px"><label>Regione</label><input id="strRegione" data-save value="Sicilia"></div>
+          </div>
+          <div class="small">Comune e Provincia adattano automaticamente lo spazio alla lunghezza del nome e alla larghezza dello schermo.</div>
+        </div>
+        <div class="col-6 field"><label>PEC struttura</label><input id="strPec" data-save value="CDF.SAS@PEC.IT"></div>
+        <div class="col-6 field"><label>Telefono</label><input id="strTel" data-save placeholder="Telefono"></div>
+        <div class="col-12">
+          <h3 style="margin:8px 0 10px">Autorizzazione sanitaria</h3>
+          <div class="auth-fields">
+            <div class="field"><label>Ente rilasciante</label><input id="authEnte" data-save placeholder="ASP Messina / Comune / altro ente"></div>
+            <div class="field"><label>Tipo / titolo autorizzativo</label><input id="authTipo" data-save placeholder="Autorizzazione sanitaria / provvedimento"></div>
+            <div class="field"><label>N. autorizzazione</label><input id="authNum" data-save placeholder="Numero"></div>
+            <div class="field"><label>Data autorizzazione</label><input id="authDate" data-save type="date"></div>
+            <div class="field"><label>Protocollo</label><input id="authProt" data-save placeholder="Protocollo, se presente"></div>
+          </div>
+        </div>
+        <div class="col-12 field"><label>Estremi autorizzazione sanitaria · generati automaticamente</label><input id="authRef" data-save placeholder="Si compila automaticamente dai campi sopra"></div>
+        <div class="col-6 field"><label>Estremi accreditamento</label><input id="accrRef" data-save value="Decreto n. 1548 dell’1 agosto 2017 (rinnovo)"></div>
+        <div class="col-3 field"><label>N. decreto accreditamento</label><input id="accrNum" data-save value="1548"></div>
+        <div class="col-3 field"><label>Data decreto accreditamento</label><input id="accrDate" data-save type="date" value="2017-08-01"></div>
+        <div class="col-6 field"><label>Branca / attività</label><input id="branch" data-save value="Laboratorio di analisi cliniche / specialistica ambulatoriale"></div>
+        <div class="col-6 field"><label>Codice struttura / eventuale codice regionale</label><input id="strCode" data-save placeholder="Se disponibile"></div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col-6 card">
+        <h2>Legale rappresentante</h2>
+        <div class="grid">
+          <div class="col-6 field"><label>Nome</label><input id="lrNome" data-save></div>
+          <div class="col-6 field"><label>Cognome</label><input id="lrCognome" data-save></div>
+          <div class="col-6 field"><label>Codice fiscale</label><input id="lrCf" data-save></div>
+          <div class="col-6 field"><label>Qualifica / carica</label><input id="lrCarica" data-save value="Legale rappresentante"></div>
+          <div class="col-6 field"><label>Luogo di nascita</label><input id="lrNascitaLuogo" data-save></div>
+          <div class="col-6 field"><label>Data di nascita</label><input id="lrNascitaData" data-save type="date"></div>
+          <div class="col-12 field"><label>Residenza</label><input id="lrRes" data-save></div>
+          <div class="col-6 field"><label>Email</label><input id="lrEmail" data-save type="email"></div>
+          <div class="col-6 field"><label>Telefono</label><input id="lrTel" data-save></div>
+        </div>
+      </div>
+      <div class="col-6 card">
+        <h2>Nuovo Direttore Responsabile</h2>
+        <div class="grid">
+          <div class="col-6 field"><label>Nome</label><input id="drNome" data-save></div>
+          <div class="col-6 field"><label>Cognome</label><input id="drCognome" data-save></div>
+          <div class="col-6 field"><label>Codice fiscale</label><input id="drCf" data-save></div>
+          <div class="col-6 field"><label>Qualifica professionale</label><select id="drQualifica" data-save><option value="">Seleziona</option><option>Medico chirurgo</option><option>Biologo</option><option>Altro</option></select></div>
+          <div class="col-6 field"><label>Luogo di nascita</label><input id="drNascitaLuogo" data-save></div>
+          <div class="col-6 field"><label>Data di nascita</label><input id="drNascitaData" data-save type="date"></div>
+          <div class="col-12 field"><label>Residenza</label><input id="drRes" data-save></div>
+          <div class="col-4 field"><label>Ordine professionale</label><input id="drOrdine" data-save placeholder="es. OMCEO Messina"></div>
+          <div class="col-4 field"><label>N. iscrizione</label><input id="drOrdNum" data-save></div>
+          <div class="col-4 field"><label>Provincia Ordine</label><input id="drOrdProv" data-save></div>
+          <div class="col-6 field"><label>Specializzazione / titolo utile</label><input id="drSpec" data-save></div>
+          <div class="col-6 field"><label>Anni esperienza utile dichiarati</label><input id="drExp" data-save type="number" min="0" step="1"></div>
+          <div class="col-12 field"><label>Estremi documentazione requisiti</label><textarea id="drReq" data-save placeholder="Titoli, esperienza, certificazioni, eventuale documentazione allegata"></textarea></div>
+          <div class="col-6 field"><label>Email / PEC</label><input id="drEmail" data-save></div>
+          <div class="col-6 field"><label>Telefono</label><input id="drTel" data-save></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Dati della variazione</h2>
+      <div class="grid">
+        <div class="col-4 field"><label>Precedente Direttore Responsabile</label><input id="oldDr" data-save></div>
+        <div class="col-4 field"><label>Data cessazione</label><input id="oldDrEnd" data-save type="date"></div>
+        <div class="col-4 field"><label>Data decorrenza nuovo incarico</label><input id="drStart" data-save type="date"></div>
+        <div class="col-6 field"><label>Motivo variazione</label><select id="varReason" data-save><option>Sostituzione del Direttore Responsabile</option><option>Decesso del precedente Direttore Responsabile</option><option>Dimissioni / cessazione incarico</option><option>Altro</option></select></div>
+        <div class="col-6 field"><label>Atto di nomina / decisione societaria</label><input id="nominaRef" data-save placeholder="Data e descrizione"></div>
+        <div class="col-12 field"><label>Descrizione sintetica della variazione</label><textarea id="varDesc" data-save>Variazione dell’assetto organizzativo conseguente alla sostituzione del Direttore Responsabile della struttura, con permanenza della titolarità e della sede.</textarea></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tab" id="tab-asp">
+    <div class="card">
+      <h2>ASP Messina · pratica autorizzativa</h2>
+      <div class="warning"><b>Sequenza consigliata:</b> inviare questa comunicazione all’ASP per la presa d’atto/aggiornamento dell’autorizzazione sanitaria connesso alla variazione organizzativa. Conservare protocollo e risposta/provvedimento per la pratica regionale.</div>
+      <div class="field"><label>Oggetto PEC ASP</label><input id="aspSubject" data-save></div>
+      <div class="field"><label>Testo PEC ASP</label><textarea id="aspBody" data-save style="min-height:380px"></textarea></div>
+      <div class="toolbar">
+        <button class="btn brand" onclick="generateTexts()">↻ Rigenera dai dati</button>
+        <button class="btn" onclick="copyText('aspBody')">📋 Copia testo</button>
+        <button class="btn" onclick="openPreview('aspLetter')">✏️ Compila / Modifica</button>
+        <button class="btn" onclick="openPrintPreview('aspLetter')">👁️ Anteprima stampa</button>
+        <button class="btn ok" onclick="printKind('aspLetter')">🖨️ Salva PDF / Stampa</button>
+        <button class="btn ok" onclick="downloadEml('asp')">✉️ Crea PEC .EML + allegati</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Checklist ASP</h3>
+      <div id="aspChecklist"></div>
+    </div>
+  </section>
+
+  <section class="tab" id="tab-regione">
+    <div class="card">
+      <h2>Regione Siciliana · Servizio 8</h2>
+      <div class="warning"><b>Attenzione al passaggio ASP:</b> la pagina ufficiale del Servizio 8, Punto 3, richiede tra la documentazione la dichiarazione relativa all’acquisizione dell’autorizzazione sanitaria rilasciata dall’ASP competente. Inserisci gli estremi quando disponibili.</div>
+      <div class="grid">
+        <div class="col-6 field"><label>Estremi aggiornamento/presa d’atto ASP</label><input id="aspUpdateRef" data-save placeholder="Provvedimento/protocollo/data"></div>
+        <div class="col-6 field"><label>Data comunicazione Regione</label><input id="regDate" data-save type="date"></div>
+      </div>
+      <div class="field"><label>Oggetto PEC Regione</label><input id="regSubject" data-save></div>
+      <div class="field"><label>Testo PEC Regione</label><textarea id="regBody" data-save style="min-height:400px"></textarea></div>
+      <div class="toolbar">
+        <button class="btn brand" onclick="generateTexts()">↻ Rigenera dai dati</button>
+        <button class="btn" onclick="copyText('regBody')">📋 Copia testo</button>
+        <button class="btn" onclick="openPreview('regLetter')">✏️ Compila / Modifica</button>
+        <button class="btn" onclick="openPrintPreview('regLetter')">👁️ Anteprima stampa</button>
+        <button class="btn ok" onclick="printKind('regLetter')">🖨️ Salva PDF / Stampa</button>
+        <button class="btn ok" onclick="downloadEml('reg')">✉️ Crea PEC .EML + allegati</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Checklist Regione</h3>
+      <div id="regChecklist"></div>
+    </div>
+  </section>
+
+  <section class="tab" id="tab-moduli">
+    <div class="card">
+      <h2>Modulistica ufficiale Regione · Punto 3</h2>
+      <p class="small">I pulsanti “Originale Regione” aprono i file Word pubblicati dalla Regione. I pulsanti “Compila/Stampa” generano una versione di lavoro già riempita con i dati inseriti nella pratica. Verificare il testo sul modulo ufficiale vigente prima di sottoscrivere.</p>
+      <div class="toolbar">
+        <button class="btn ok" onclick="printRegionPack()">🗂️ Fascicolo Regione completo / PDF</button>
+      </div>
+      <div id="moduleCards"></div>
+    </div>
+    <div class="card">
+      <h2>Soggetti per Mod. 7 / verifiche antimafia</h2>
+      <p class="small">Il numero e la tipologia dei soggetti rilevanti dipendono dalla forma societaria e dall’art. 85 del D.Lgs. 159/2011. Il legale rappresentante viene proposto automaticamente; aggiungi gli altri soggetti che devono figurare nella scheda dati.</p>
+      <div id="antiPeople"></div>
+      <button class="btn brand" onclick="addAntiPerson()">+ Aggiungi soggetto</button>
+    </div>
+  </section>
+
+  <section class="tab" id="tab-allegati">
+    <div class="card">
+      <h2>Documenti principali della pratica</h2>
+      <div id="drop" class="drop">
+        <b>Trascina qui i documenti principali</b><br>
+        <span class="small">Nomina, documenti del Direttore, autorizzazione, moduli, identità, curriculum ecc. I file vengono salvati automaticamente sul dispositivo.</span><br><br>
+        <label class="btn brand" style="display:inline-block">Seleziona documenti<input id="fileInput" type="file" multiple hidden></label>
+      </div>
+      <div class="toolbar">
+        <button class="btn" onclick="suggestAttachments()">✨ Prepara elenco documenti consigliati</button>
+      </div>
+      <div id="attachList"></div>
+    </div>
+
+    <div class="card">
+      <h2>Documenti extra</h2>
+      <p class="small">Puoi conservare qualsiasi altro documento collegato alla pratica. Per ogni file decidi se deve finire nella PEC ASP, nella PEC Regione, in entrambe oppure restare solo nell’archivio.</p>
+      <div id="extraDrop" class="drop extra-drop">
+        <b>Trascina qui i documenti extra</b><br>
+        <span class="small">PDF, Word, immagini, scansioni, ricevute, protocolli, visure, comunicazioni o altro.</span><br><br>
+        <label class="btn brand" style="display:inline-block">+ Allega documenti extra<input id="extraFileInput" type="file" multiple hidden></label>
+      </div>
+      <div id="extraAttachList"></div>
+    </div>
+
+    <div class="card">
+      <div class="toolbar">
+        <button class="btn warn" onclick="clearAttachments()">Elimina tutti i documenti salvati</button>
+      </div>
+      <div class="warning"><b>Nota:</b> gli allegati sono salvati automaticamente nel browser del dispositivo. Usa anche “Esporta pratica completa” come copia di sicurezza e per spostare la pratica tra PC e smartphone.</div>
+    </div>
+  </section>
+
+
+  <section class="tab" id="tab-inoltri">
+    <div class="card">
+      <h2>Centro Inoltri</h2>
+      <p class="small">Prepara in un solo passaggio destinatario, testo, moduli compilati e allegati documentali. ASP e Regione hanno profili predefiniti; il profilo Terzo è completamente personalizzabile.</p>
+
+      <div class="dispatch-targets">
+        <button type="button" class="dispatch-target active" data-dispatch="asp" onclick="setDispatchTarget('asp')">
+          <b>ASP Messina</b><small>PEC autorizzativa + documenti marcati ASP</small>
+        </button>
+        <button type="button" class="dispatch-target" data-dispatch="reg" onclick="setDispatchTarget('reg')">
+          <b>Regione Siciliana</b><small>PEC Servizio 8 + Mod. 3–7 + documenti Regione</small>
+        </button>
+        <button type="button" class="dispatch-target" data-dispatch="third" onclick="setDispatchTarget('third')">
+          <b>Destinatario terzo</b><small>Consulente, professionista, società o altro soggetto</small>
+        </button>
+      </div>
+    </div>
+
+    <div class="card" id="thirdRecipientCard" style="display:none">
+      <h3>Destinatario terzo</h3>
+      <div class="grid">
+        <div class="col-4 field"><label>Nome / denominazione</label><input id="thirdName" data-save placeholder="Destinatario"></div>
+        <div class="col-4 field"><label>PEC / e-mail</label><input id="thirdPec" data-save type="email" placeholder="indirizzo@pec.it"></div>
+        <div class="col-4 field"><label>CC opzionale</label><input id="thirdCc" data-save placeholder="eventuale secondo indirizzo"></div>
+        <div class="col-12 field"><label>Oggetto</label><input id="thirdSubject" data-save value="Trasmissione documentazione – variazione Direttore Responsabile – Centro Diagnostico Fiorello"></div>
+        <div class="col-12 field"><label>Testo messaggio</label><textarea id="thirdBody" data-save style="min-height:190px">Si trasmette, per gli adempimenti di competenza e/o per opportuna conoscenza, la documentazione relativa alla variazione del Direttore Responsabile del Centro Diagnostico Fiorello.
+
+In allegato sono inclusi i documenti selezionati nel pacchetto.
+
+Cordiali saluti.</textarea></div>
+      </div>
+    </div>
+
+    <div class="dispatch-grid">
+      <div class="col-6 card">
+        <h3>Documenti generati da includere</h3>
+        <div class="pack-docs">
+          <label class="pack-item"><input type="checkbox" id="pkgAspLetter" data-package-check><span><b>Lettera / PEC ASP</b><br><small>Testo generato per ASP Messina</small></span></label>
+          <label class="pack-item"><input type="checkbox" id="pkgRegLetter" data-package-check><span><b>Lettera / PEC Regione</b><br><small>Testo generato per Servizio 8</small></span></label>
+          <label class="pack-item"><input type="checkbox" id="pkgMod3" data-package-check><span><b>Mod. 3</b><br><small>Variazione organizzativa</small></span></label>
+          <label class="pack-item"><input type="checkbox" id="pkgMod4" data-package-check><span><b>Mod. 4</b><br><small>Requisiti soggettivi</small></span></label>
+          <label class="pack-item"><input type="checkbox" id="pkgMod5" data-package-check><span><b>Mod. 5</b><br><small>Parentela / affinità</small></span></label>
+          <label class="pack-item"><input type="checkbox" id="pkgMod6" data-package-check><span><b>Mod. 6</b><br><small>Requisiti oggettivi</small></span></label>
+          <label class="pack-item"><input type="checkbox" id="pkgMod7" data-package-check><span><b>Mod. 7</b><br><small>Scheda antimafia</small></span></label>
+          <label class="pack-item"><input type="checkbox" id="pkgSummary" data-package-check><span><b>Riepilogo pratica</b><br><small>Dati essenziali e checklist</small></span></label>
+        </div>
+      </div>
+
+      <div class="col-6 card">
+        <h3>Allegati documentali</h3>
+        <div id="dispatchFiles"><p class="small">Carica i documenti nella sezione Allegati.</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Pacchetto pronto</h3>
+      <div id="dispatchSummary" class="dispatch-summary"></div>
+      <div class="dispatch-actions" style="margin-top:12px">
+        <button class="btn" onclick="previewDispatchMessage()">👁️ Anteprima messaggio</button>
+        <button class="btn brand" onclick="createDispatchEml()">✉️ Crea EML completo</button>
+        <button class="btn ok" onclick="shareDispatchPackage()">↗ Condividi pacchetto</button>
+        <button class="btn" onclick="downloadDispatchIndex()">📄 Distinta allegati</button>
+      </div>
+      <div class="note" style="margin-top:12px"><b>Inoltro comandato:</b> l’app prepara automaticamente il messaggio e incorpora i documenti selezionati nel file EML. L’invio effettivo parte dal client PEC/e-mail del dispositivo, perché un file HTML locale non può spedire autonomamente messaggi certificati senza un servizio di posta configurato.</div>
+    </div>
+  </section>
+
+  <section class="tab" id="tab-archivio">
+    <div class="grid">
+      <div class="col-6 card">
+        <h2>Salvataggio e ripristino</h2>
+        <p><b>Salvataggio automatico continuo:</b> ogni campo, checklist e impostazione viene salvato mentre scrivi. Alla riapertura dell’HTML sullo stesso dispositivo/browser, l’app ripristina automaticamente l’ultima pratica. I documenti principali e i documenti extra sono conservati nel database locale del browser.</p>
+        <p>Per una copia indipendente dal browser e per passare la pratica tra PC e smartphone usa <b>Esporta pratica completa</b>: il JSON contiene dati, checklist e tutti gli allegati.</p>
+        <div class="storage-box"><span class="pill ok" id="archiveSaveInfo">Ripristino automatico attivo</span><button class="btn outline" onclick="requestPersistentStorage(true)">Proteggi archivio locale</button></div>
+        <div class="toolbar">
+          <button class="btn brand" onclick="saveAll()">💾 Salva</button>
+          <button class="btn brand" onclick="exportArchive()">📦 Esporta JSON completo</button>
+          <label class="btn outline" style="display:inline-block">📥 Importa JSON<input id="importArchive2" type="file" accept=".json" hidden></label>
+        </div>
+      </div>
+      <div class="col-6 card">
+        <h2>PDF e PEC</h2>
+        <p>Ogni documento ha il pulsante <b>Stampa / PDF</b>. Su Windows, Android, iPhone/iPad e macOS puoi scegliere “Salva come PDF” dalla schermata di stampa, se supportato dal dispositivo.</p>
+        <p>Il pulsante <b>Crea PEC .EML</b> produce un messaggio e-mail con destinatario, oggetto, testo e gli allegati selezionati. Il file può essere aperto con un client e-mail compatibile; l’invio certificato deve comunque avvenire dalla tua casella PEC.</p>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Fonti e moduli ufficiali</h2>
+      <div id="officialLinks"></div>
+    </div>
+  </section>
+
+
+
+<div id="printPreview" class="print-preview-overlay" aria-hidden="true">
+  <div class="print-preview-toolbar">
+    <div class="print-preview-title" id="printPreviewTitle">Anteprima stampa</div>
+    <button class="btn ok" onclick="printFromPrintPreview()">🖨️ Salva PDF / Stampa</button>
+    <button class="btn" onclick="closePrintPreview()">✕ Chiudi</button>
+  </div>
+  <div class="print-preview-shell">
+    <div id="printPreviewPaper" class="print-preview-paper"></div>
+  </div>
+</div>
+
+<div id="docPreview" class="preview-overlay" aria-hidden="true">
+  <div class="preview-toolbar">
+    <div class="preview-title" id="previewTitle">Anteprima documento</div>
+    <button class="btn" onclick="savePreviewEdits()">💾 Salva modifiche</button>
+    <button class="btn warn" onclick="regeneratePreview()">↻ Rigenera dai dati</button>
+    <button class="btn" onclick="downloadPreviewDoc()">⬇️ Scarica DOC</button>
+    <button class="btn" onclick="openPrintPreview(currentPreviewKind)">👁️ Anteprima stampa</button>
+    <button class="btn ok" onclick="printPreview()">🖨️ Salva PDF / Stampa</button>
+    <button class="btn" onclick="closePreview()">✕ Chiudi</button>
+  </div>
+  <div class="preview-hint"><b>Anteprima modificabile:</b> tocca/clicca direttamente sul testo del documento per correggerlo prima di salvarlo o stamparlo.</div>
+  <div class="preview-shell">
+    <div id="previewPaper" class="preview-paper" contenteditable="true" spellcheck="true"></div>
+  </div>
+</div>
+
+  <footer class="footer">
+    CDF · pratica locale. Nessun dato viene inviato automaticamente a server esterni. Verificare sempre requisiti, firme e documentazione sul portale ufficiale prima dell’invio.
+  </footer>
+</div>
+
+<script>
+const OFFICIAL = {"mod3": "https://www.regione.sicilia.it/system/files/2025-03/Mod.%203%20-%20Istanza%20per%20il%20rinnovo%20dell%E2%80%99accreditamento%20a%20seguito%20di%20trasferimento%20di%20sede%20o%20per%20variazioni%20strutturali%2C%20organizzative%20o%20tecnologiche.doc", "mod4": "https://www.regione.sicilia.it/system/files/2025-03/Mod.%204%20-%20Dichiarazione%20requisiti%20soggettivi_1.doc", "mod5": "https://www.regione.sicilia.it/system/files/2025-03/Mod.%205%20-%20Dichiarazione%20parentela_2.doc", "mod6": "https://www.regione.sicilia.it/system/files/2025-03/Mod.%206%20-%20Dichiarazione%20possesso%20requisiti%20oggettivi%20accreditamento_1.doc", "mod7": "https://www.regione.sicilia.it/system/files/2025-03/Mod.%207%20-%20Scheda%20dati_1.doc", "page": "https://www.regione.sicilia.it/istituzioni/regione/strutture-regionali/assessorato-salute/dipartimento-pianificazione-strategica/servizio-8-programmazione-territoriale-accreditamento"};
+const SAVE_KEY='cdf_director_practice_v8';
+const LEGACY_SAVE_KEYS=['cdf_director_practice_v7','cdf_director_practice_v6','cdf_director_practice_v5','cdf_director_practice_v4','cdf_director_practice_v3'];
+const DB_NAME='cdf_director_files_v1', STORE='files', PRACTICE_STORE='practice', DB_VERSION=2;
+let moduleEdits={};
+let currentPreviewKind=null;
+const checklistASP=[
+ ['asp_nomina','Atto di nomina / decisione societaria del nuovo Direttore Responsabile'],
+ ['asp_accettazione','Accettazione dell’incarico del nuovo Direttore Responsabile'],
+ ['asp_doc_dr','Documento di identità del nuovo Direttore Responsabile'],
+ ['asp_cf_dr','Codice fiscale del nuovo Direttore Responsabile'],
+ ['asp_titoli','Titolo professionale, iscrizione all’Ordine e documentazione dei requisiti'],
+ ['asp_cv','Curriculum professionale'],
+ ['asp_autorizz','Copia dell’autorizzazione sanitaria vigente'],
+ ['asp_lr_doc','Documento di identità del legale rappresentante'],
+ ['asp_evento','Documentazione della cessazione del precedente Direttore, se pertinente'],
+ ['asp_altro','Eventuale ulteriore modulistica richiesta dall’ASP']
+];
+const checklistREG=[
+ ['reg_mod3','Mod. 3 – Istanza per variazioni strutturali/organizzative/tecnologiche'],
+ ['reg_mod4lr','Mod. 4 – Requisiti soggettivi del legale rappresentante'],
+ ['reg_mod4dr','Mod. 4 – Requisiti soggettivi del Direttore sanitario/responsabile'],
+ ['reg_mod5','Mod. 5 – Dichiarazione parentela/affinità'],
+ ['reg_mod6','Mod. 6 – Requisiti oggettivi di accreditamento'],
+ ['reg_mod7','Mod. 7 – Scheda dati per documentazione antimafia'],
+ ['reg_asp','Dichiarazione/estremi dell’autorizzazione sanitaria aggiornata dall’ASP competente'],
+ ['reg_ids','Documenti di identità dei firmatari'],
+ ['reg_nomina','Atto di nomina/accettazione e documentazione della variazione organizzativa'],
+ ['reg_altro','Eventuali ulteriori atti richiesti durante l’istruttoria']
+];
+const modules=[
+ ['3','Istanza per rinnovo accreditamento a seguito di variazioni strutturali, organizzative o tecnologiche',OFFICIAL.mod3,'mod3'],
+ ['4','Dichiarazione requisiti soggettivi',OFFICIAL.mod4,'mod4'],
+ ['5','Dichiarazione parentela / affinità',OFFICIAL.mod5,'mod5'],
+ ['6','Dichiarazione possesso requisiti oggettivi accreditamento',OFFICIAL.mod6,'mod6'],
+ ['7','Scheda dati per documentazione antimafia',OFFICIAL.mod7,'mod7']
+];
+
+
+
+function goTab(name){
+ const btn=document.querySelector(`#nav button[data-tab="${name}"]`);
+ if(btn) btn.click();
+}
+
+function isStandaloneMode(){
+ return window.matchMedia?.('(display-mode: standalone)').matches || window.navigator.standalone===true;
+}
+function updateAppModeStatus(){
+ const b=q('fullscreenBtn');
+ if(b)b.textContent=document.fullscreenElement?'⤢ Esci schermo intero':'⛶ Schermo intero';
+}
+async function toggleFullscreen(){
+ try{
+   if(!document.fullscreenElement){
+     const el=document.documentElement;
+     if(el.requestFullscreen) await el.requestFullscreen({navigationUI:'hide'}).catch(()=>el.requestFullscreen());
+     else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+   }else{
+     if(document.exitFullscreen) await document.exitFullscreen();
+     else if(document.webkitExitFullscreen) document.webkitExitFullscreen();
+   }
+ }catch(e){
+   // Fallback "app-like" quando il browser non consente Fullscreen API (alcuni browser iOS/file://)
+   document.body.classList.toggle('app-fullscreen');
+ }
+ updateAppModeStatus();
+}
+function toggleAppMode(){
+ document.body.classList.toggle('app-fullscreen');
+ localStorage.setItem('cdf_app_mode',document.body.classList.contains('app-fullscreen')?'1':'0');
+ updateAppModeStatus();
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+document.addEventListener('fullscreenchange',updateAppModeStatus);
+document.addEventListener('webkitfullscreenchange',updateAppModeStatus);
+
+
+let _autoFullscreenTried=false;
+async function tryAutoFullscreen(){
+ if(_autoFullscreenTried || document.fullscreenElement || isStandaloneMode()) return;
+ _autoFullscreenTried=true;
+ try{
+   const el=document.documentElement;
+   if(el.requestFullscreen) await el.requestFullscreen({navigationUI:'hide'}).catch(()=>{});
+   else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+ }catch{}
+}
+function enableAppModeImmediately(){
+ document.body.classList.add('app-fullscreen');
+ localStorage.setItem('cdf_app_mode','1');
+}
+function installSilentFullscreenFallback(){
+ // I browser mobili spesso richiedono un gesto dell'utente per entrare in vero fullscreen.
+ // L'interfaccia parte comunque già in modalità app; al primo tocco/click si tenta il fullscreen reale senza mostrare pulsanti.
+ const once=async()=>{
+   await tryAutoFullscreen();
+   document.removeEventListener('pointerdown',once,true);
+   document.removeEventListener('touchstart',once,true);
+   document.removeEventListener('click',once,true);
+ };
+ document.addEventListener('pointerdown',once,true);
+ document.addEventListener('touchstart',once,true);
+ document.addEventListener('click',once,true);
+ setTimeout(tryAutoFullscreen,120);
+}
+
+function q(id){return document.getElementById(id)}
+function v(id){return (q(id)?.value||'').trim()}
+function full(prefix){return [v(prefix+'Nome'),v(prefix+'Cognome')].filter(Boolean).join(' ')}
+function dmy(s){if(!s)return ''; const [y,m,d]=s.split('-'); return `${d}/${m}/${y}`}
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function todayISO(){return new Date().toISOString().slice(0,10)}
+function locationLine(){
+ const parts=[];
+ const addr=v('strAddr'); if(addr) parts.push(addr);
+ const cap=v('strCap'), comune=v('strComune'), sigla=v('strSiglaProv'), prov=v('strProvincia');
+ let town=[cap,comune].filter(Boolean).join(' '); if(sigla) town += (town?' ':'')+'('+sigla.toUpperCase()+')'; else if(prov) town += (town?' ':'')+'('+prov+')';
+ if(town) parts.push(town);
+ return parts.join(', ');
+}
+function cityLabel(){
+ const c=v('strComune')||'[COMUNE]', s=v('strSiglaProv'); return s?`${c} (${s.toUpperCase()})`:c;
+}
+function buildAuthRef(){
+ const bits=[];
+ if(v('authTipo')) bits.push(v('authTipo'));
+ if(v('authNum')) bits.push('n. '+v('authNum'));
+ if(v('authDate')) bits.push('del '+dmy(v('authDate')));
+ if(v('authProt')) bits.push('prot. '+v('authProt'));
+ if(v('authEnte')) bits.push('rilasciata da '+v('authEnte'));
+ return bits.join(' ');
+}
+function syncDerivedFields(){
+ const auto=buildAuthRef();
+ if(auto && q('authRef') && !q('authRef').dataset.manualOverride) q('authRef').value=auto;
+ const n=v('accrNum'), d=v('accrDate');
+ if((n||d) && q('accrRef') && !q('accrRef').dataset.manualOverride){
+   q('accrRef').value=`Decreto n. ${n||'___'}${d?' del '+dmy(d):''}`;
+ }
+}
+function markSynced(){const el=q('regenStatus'); if(el){el.textContent='✓ Documenti sincronizzati con i dati';el.className='pill ok'}}
+function markManual(){const el=q('regenStatus'); if(el){el.textContent='Testo PEC modificato manualmente · premi “Rigenera dai dati” per riallineare';el.className='pill warn'}}
+function filenameSafe(s){return s.replace(/[^\w\-.]+/g,'_').replace(/_+/g,'_')}
+
+function clamp(n,min,max){return Math.max(min,Math.min(max,n))}
+function updateSmartWidths(){
+ const specs={strComune:{min:190,max:430,base:120,char:9.2},strProvincia:{min:155,max:360,base:110,char:9}};
+ Object.entries(specs).forEach(([id,cfg])=>{
+   const el=q(id), wrap=q('wrap-'+id); if(!el||!wrap)return;
+   const text=(el.value||el.placeholder||'').trim();
+   const px=clamp(cfg.base+text.length*cfg.char,cfg.min,cfg.max);
+   wrap.style.setProperty('--smart-basis',px+'px');
+ });
+}
+function setSaveStatus(state,when){
+ const el=q('saveStatus'); if(!el)return;
+ if(state==='saving'){el.textContent='Salvataggio…';el.className='pill warn save-indicator';return}
+ if(state==='error'){el.textContent='Errore salvataggio';el.className='pill warn save-indicator';return}
+ const t=when?new Date(when):new Date();
+ el.textContent='Salvato automaticamente · '+t.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+ el.className='pill ok save-indicator';
+}
+async function requestPersistentStorage(showToast=false){
+ const el=q('storageStatus');
+ try{
+   if(!navigator.storage || !navigator.storage.persist){
+     if(el){el.textContent='Archivio locale del browser';el.className='pill'}
+     if(showToast)toast('Questo browser non espone la funzione storage persistente.');
+     return false;
+   }
+   let persisted=await navigator.storage.persisted();
+   if(!persisted) persisted=await navigator.storage.persist();
+   if(el){
+     el.textContent=persisted?'Archivio locale protetto':'Archivio locale standard';
+     el.className=persisted?'pill ok':'pill warn';
+   }
+   if(showToast)toast(persisted?'Archivio locale protetto dalla pulizia automatica':'Il browser non ha concesso lo storage persistente');
+   return persisted;
+ }catch(e){
+   if(el){el.textContent='Archivio locale';el.className='pill'}
+   return false;
+ }
+}
+
+document.querySelectorAll('#nav button').forEach(b=>b.addEventListener('click',()=>{
+ document.querySelectorAll('#nav button').forEach(x=>x.classList.remove('active')); b.classList.add('active');
+ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); q('tab-'+b.dataset.tab).classList.add('active');
+ localStorage.setItem('cdf_director_active_tab',b.dataset.tab);
+ saveAll(false);
+ window.scrollTo({top:0,behavior:'smooth'});
+}));
+
+function renderChecklists(){
+ const build=(arr,host)=>{q(host).innerHTML=arr.map(([id,t])=>`<div class="checkline"><input type="checkbox" id="${id}" data-check><label for="${id}" style="font-size:14px;color:var(--ink);font-weight:600">${esc(t)}</label></div>`).join('')};
+ build(checklistASP,'aspChecklist'); build(checklistREG,'regChecklist');
+ document.querySelectorAll('[data-check]').forEach(x=>x.addEventListener('change',saveAll));
+}
+function renderModules(){
+ q('moduleCards').innerHTML=modules.map(([n,title,url,id])=>`
+ <div class="docbox">
+   <div class="dochead">
+     <div><b>Mod. ${n}</b> · ${esc(title)}</div>
+     <div class="toolbar">
+       <a class="btn outline" href="${url}" target="_blank" rel="noopener">Originale Regione ↗</a>
+       <button class="btn brand" onclick="openPreview('${id}')">✏️ Compila / Modifica</button>
+       <button class="btn" onclick="openPrintPreview('${id}')">👁️ Anteprima stampa</button>
+       <button class="btn" onclick="downloadDoc('${id}')">⬇️ Scarica DOC</button>
+       <button class="btn ok" onclick="printKind('${id}')">🖨️ Salva PDF / Stampa</button>
+     </div>
+   </div>
+   <div class="small" id="${id}Status">Si aggiorna automaticamente dai dati inseriti.</div>
+ </div>`).join('');
+ q('officialLinks').innerHTML=`
+ <p><a href="${OFFICIAL.page}" target="_blank" rel="noopener">Pagina ufficiale Servizio 8 – Programmazione Territoriale – Accreditamento</a></p>
+ ${modules.map(([n,t,u])=>`<p><a href="${u}" target="_blank" rel="noopener">Mod. ${n} – ${esc(t)}</a></p>`).join('')}`;
+}
+
+let antiPeople=[];
+function addAntiPerson(seed={}){
+ antiPeople.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random()),nome:'',cognome:'',cf:'',nascitaLuogo:'',nascitaData:'',residenza:'',qualita:'' ,...seed});
+ renderAnti(); saveAll();
+}
+function syncLRtoAnti(){
+ const lrName=v('lrNome'), lrSur=v('lrCognome');
+ if(!lrName&&!lrSur) return;
+ let p=antiPeople.find(x=>x.qualita==='Legale rappresentante');
+ if(!p){p={id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),nome:'',cognome:'',cf:'',nascitaLuogo:'',nascitaData:'',residenza:'',qualita:'Legale rappresentante'};antiPeople.unshift(p)}
+ p.nome=lrName;p.cognome=lrSur;p.cf=v('lrCf');p.nascitaLuogo=v('lrNascitaLuogo');p.nascitaData=v('lrNascitaData');p.residenza=v('lrRes');
+ renderAnti();
+}
+function renderAnti(){
+ q('antiPeople').innerHTML=antiPeople.map((p,i)=>`
+ <div class="docbox">
+  <div class="dochead"><b>Soggetto ${i+1}</b><button class="btn outline" onclick="removeAnti('${p.id}')">Rimuovi</button></div>
+  <div class="grid">
+   <div class="col-3 field"><label>Nome</label><input value="${esc(p.nome)}" onchange="antiSet('${p.id}','nome',this.value)"></div>
+   <div class="col-3 field"><label>Cognome</label><input value="${esc(p.cognome)}" onchange="antiSet('${p.id}','cognome',this.value)"></div>
+   <div class="col-3 field"><label>Codice fiscale</label><input value="${esc(p.cf)}" onchange="antiSet('${p.id}','cf',this.value)"></div>
+   <div class="col-3 field"><label>Qualità / carica</label><input value="${esc(p.qualita)}" onchange="antiSet('${p.id}','qualita',this.value)"></div>
+   <div class="col-3 field"><label>Luogo di nascita</label><input value="${esc(p.nascitaLuogo)}" onchange="antiSet('${p.id}','nascitaLuogo',this.value)"></div>
+   <div class="col-3 field"><label>Data di nascita</label><input type="date" value="${esc(p.nascitaData)}" onchange="antiSet('${p.id}','nascitaData',this.value)"></div>
+   <div class="col-6 field"><label>Residenza</label><input value="${esc(p.residenza)}" onchange="antiSet('${p.id}','residenza',this.value)"></div>
+  </div>
+ </div>`).join('') || '<p class="small">Nessun soggetto inserito.</p>';
+}
+function antiSet(id,k,val){let p=antiPeople.find(x=>x.id===id);if(p)p[k]=val;saveAll()}
+function removeAnti(id){antiPeople=antiPeople.filter(x=>x.id!==id);renderAnti();saveAll()}
+
+function generateTexts(){
+ syncDerivedFields();
+ const str=v('strDen')||'[DENOMINAZIONE STRUTTURA]';
+ const city=cityLabel();
+ const lr=full('lr')||'[LEGALE RAPPRESENTANTE]';
+ const dr=full('dr')||'[NUOVO DIRETTORE RESPONSABILE]';
+ const old=v('oldDr')||'[PRECEDENTE DIRETTORE]';
+ const reason=v('varReason')||'sostituzione del Direttore Responsabile';
+ const start=dmy(v('drStart'))||'[DATA DECORRENZA]';
+ const end=dmy(v('oldDrEnd'))||'[DATA CESSAZIONE]';
+ const auth=v('authRef')||'[ESTREMI AUTORIZZAZIONE SANITARIA]';
+ const accred=v('accrRef')||'[ESTREMI ACCREDITAMENTO]';
+ const desc=v('varDesc')||'Variazione dell’assetto organizzativo relativa alla Direzione Responsabile.';
+ q('aspSubject').value=`COMUNICAZIONE VARIAZIONE DIRETTORE RESPONSABILE – ${str} – ${city} – richiesta aggiornamento/presa d’atto autorizzazione sanitaria`;
+ q('aspBody').value=`Spett.le AZIENDA SANITARIA PROVINCIALE DI MESSINA
+Alla Direzione competente per autorizzazioni sanitarie / specialistica ambulatoriale
+
+Il/La sottoscritto/a ${lr}, in qualità di legale rappresentante della struttura ${str}, con sede in ${city},
+
+COMUNICA
+
+la variazione dell’assetto organizzativo della struttura relativa alla Direzione Responsabile.
+
+Precedente Direttore Responsabile: ${old}
+Data cessazione: ${end}
+Nuovo Direttore Responsabile: ${dr}
+Qualifica: ${v('drQualifica')||'[QUALIFICA]'}
+Ordine professionale: ${v('drOrdine')||'[ORDINE]'} – n. ${v('drOrdNum')||'[N.]'}
+Decorrenza dell’incarico: ${start}
+Motivo della variazione: ${reason}
+
+${desc}
+
+La struttura risulta autorizzata con: ${auth}
+e accreditata con: ${accred}.
+
+Si chiede la presa d’atto della variazione e l’adozione degli eventuali adempimenti/aggiornamenti dell’autorizzazione sanitaria di competenza, nonché la comunicazione degli estremi del relativo provvedimento/protocollo ai fini dei successivi adempimenti presso il Dipartimento regionale per la Pianificazione Strategica – Servizio 8.
+
+Si allega la documentazione selezionata nella presente pratica.
+
+Distinti saluti.
+
+${lr}
+Legale rappresentante
+${str}
+PEC: ${v('strPec')||'[PEC STRUTTURA]'}`;
+ q('regSubject').value=`VARIAZIONE ASSETTO ORGANIZZATIVO – SOSTITUZIONE DIRETTORE RESPONSABILE – ${str} – istanza Servizio 8`;
+ q('regBody').value=`Spett.le REGIONE SICILIANA
+Assessorato della Salute
+Dipartimento per la Pianificazione Strategica
+Servizio 8 – Programmazione Territoriale
+
+Il/La sottoscritto/a ${lr}, in qualità di legale rappresentante della struttura ${str}, con sede in ${city},
+
+TRASMETTE
+
+istanza e documentazione relativa alla variazione dell’assetto organizzativo della struttura conseguente alla sostituzione del Direttore Responsabile, ai fini della verifica della permanenza dei requisiti per l’accreditamento istituzionale.
+
+Precedente Direttore Responsabile: ${old}
+Nuovo Direttore Responsabile: ${dr}
+Decorrenza: ${start}
+Motivo: ${reason}
+
+Estremi autorizzazione sanitaria / aggiornamento ASP:
+${v('aspUpdateRef')||'[INSERIRE PROVVEDIMENTO O PROTOCOLLO ASP QUANDO DISPONIBILE]'}
+
+Accreditamento della struttura:
+${accred}
+
+Si trasmettono i Mod. 3, 4, 5, 6 e 7 e la restante documentazione selezionata nella pratica, chiedendo l’adozione dei provvedimenti di competenza e l’aggiornamento della posizione della struttura nell’elenco dei soggetti accreditati.
+
+Distinti saluti.
+
+${lr}
+Legale rappresentante
+${str}
+PEC: ${v('strPec')||'[PEC STRUTTURA]'}`;
+ markSynced();
+ saveAll(false);
+}
+function copyText(id){navigator.clipboard?.writeText(v(id)).then(()=>toast('Testo copiato')).catch(()=>{q(id).select();document.execCommand('copy');toast('Testo copiato')})}
+
+function modelHtml(kind){
+ const str=v('strDen')||'________________';
+ const lr=full('lr')||'________________';
+ const dr=full('dr')||'________________';
+ const head=`<div class="official">REGIONE SICILIANA<br>ASSESSORATO DELLA SALUTE<br>DIPARTIMENTO PER LA PIANIFICAZIONE STRATEGICA<br>SERVIZIO 8 – PROGRAMMAZIONE TERRITORIALE</div>`;
+ const foot=`<p class="noteprint"><b>Nota di compilazione:</b> documento generato dall’app CDF come versione di lavoro sulla base della modulistica indicata dal Servizio 8. Confrontare con il file Word ufficiale vigente prima della sottoscrizione.</p>`;
+ if(kind==='aspLetter') return `<h1>Comunicazione variazione Direttore Responsabile</h1><p><b>Destinatario:</b> ASP Messina – ${esc(v('aspPec'))}</p><h3>Oggetto</h3><p>${esc(v('aspSubject'))}</p><div class="letter">${esc(v('aspBody')).replace(/\n/g,'<br>')}</div>`;
+ if(kind==='regLetter') return `${head}<h1>Trasmissione variazione assetto organizzativo</h1><p><b>PEC:</b> ${esc(v('regPec'))}</p><h3>Oggetto</h3><p>${esc(v('regSubject'))}</p><div class="letter">${esc(v('regBody')).replace(/\n/g,'<br>')}</div>${foot}`;
+ if(kind==='mod3') return `${head}<h1>MOD. 3 · ISTANZA PER VARIAZIONI STRUTTURALI, ORGANIZZATIVE O TECNOLOGICHE</h1>
+ <p>Il/La sottoscritto/a <b>${esc(lr)}</b>, C.F. ${esc(v('lrCf'))}, in qualità di <b>${esc(v('lrCarica')||'legale rappresentante')}</b> della struttura <b>${esc(str)}</b>, C.F./P.IVA ${esc(v('strCf')||'')}/${esc(v('strPiva')||'')}, con sede ${esc(locationLine())},</p>
+ <h3>CHIEDE</h3><p>il rinnovo / la conferma dell’accreditamento istituzionale a seguito della seguente variazione organizzativa:</p>
+ <p><b>${esc(v('varDesc'))}</b></p>
+ <table><tr><th>Autorizzazione sanitaria vigente</th><td>${esc(v('authRef'))}</td></tr><tr><th>Aggiornamento/Presa d’atto ASP</th><td>${esc(v('aspUpdateRef'))}</td></tr><tr><th>Accreditamento</th><td>${esc(v('accrRef'))}</td></tr><tr><th>Precedente Direttore</th><td>${esc(v('oldDr'))} – cessazione ${esc(dmy(v('oldDrEnd')))}</td></tr><tr><th>Nuovo Direttore</th><td>${esc(dr)} – decorrenza ${esc(dmy(v('drStart')))}</td></tr></table>
+ <p>Luogo e data ____________________</p><p>Firma del legale rappresentante ______________________________</p>${foot}`;
+ if(kind==='mod4') return `${head}<h1>MOD. 4 · DICHIARAZIONE REQUISITI SOGGETTIVI</h1>
+ <h3>A · Legale rappresentante</h3>
+ ${personTable('lr',lr,v('lrCarica')||'Legale rappresentante')}
+ <p>Il/La dichiarante attesta, sotto la propria responsabilità, il possesso dei requisiti soggettivi previsti dalla normativa applicabile e dal D.A. n. 741 del 04/07/2023, secondo quanto richiesto dal modello ufficiale.</p>
+ <p>Firma ______________________________</p>
+ <hr><h3>B · Direttore Responsabile</h3>
+ ${personTable('dr',dr,(v('drQualifica')||'')+' – Direttore Responsabile')}
+ <p>Ordine: ${esc(v('drOrdine'))} · n. ${esc(v('drOrdNum'))} · Provincia ${esc(v('drOrdProv'))}</p>
+ <p>Titolo/specializzazione: ${esc(v('drSpec'))}</p>
+ <p>Documentazione requisiti: ${esc(v('drReq'))}</p>
+ <p>Il/La dichiarante attesta, sotto la propria responsabilità, il possesso dei requisiti soggettivi previsti dalla normativa applicabile e dal D.A. n. 741 del 04/07/2023, secondo quanto richiesto dal modello ufficiale.</p>
+ <p>Firma ______________________________</p>${foot}`;
+ if(kind==='mod5') return `${head}<h1>MOD. 5 · DICHIARAZIONE PARENTELA / AFFINITÀ</h1>
+ ${personTable('lr',lr,v('lrCarica')||'Legale rappresentante')}
+ <p>Il/La sottoscritto/a rende la dichiarazione prevista dal modello ufficiale in merito all’insussistenza di vincoli di parentela o affinità con il personale del Servizio 8 “Programmazione Territoriale” del Dipartimento Pianificazione Strategica dell’Assessorato della Salute della Regione Siciliana.</p>
+ <p>Luogo e data ____________________</p><p>Firma ______________________________</p>${foot}`;
+ if(kind==='mod6') return `${head}<h1>MOD. 6 · DICHIARAZIONE POSSESSO REQUISITI OGGETTIVI DI ACCREDITAMENTO</h1>
+ <p>Il/La sottoscritto/a <b>${esc(lr)}</b>, in qualità di ${esc(v('lrCarica')||'legale rappresentante')} della struttura <b>${esc(str)}</b>, dichiara sotto la propria responsabilità il possesso/mantenimento dei requisiti oggettivi di accreditamento secondo il modello ufficiale.</p>
+ <table><tr><th>Sede</th><td>${esc(locationLine())}</td></tr><tr><th>Branca/attività</th><td>${esc(v('branch'))}</td></tr><tr><th>Autorizzazione</th><td>${esc(v('authRef'))}</td></tr><tr><th>Accreditamento</th><td>${esc(v('accrRef'))}</td></tr><tr><th>Variazione</th><td>${esc(v('varDesc'))}</td></tr></table>
+ <p>Luogo e data ____________________</p><p>Firma ______________________________</p>${foot}`;
+ if(kind==='mod7') return `${head}<h1>MOD. 7 · SCHEDA DATI PER DOCUMENTAZIONE ANTIMAFIA</h1>
+ <h3>Impresa / struttura</h3>
+ <table><tr><th>Denominazione</th><td>${esc(str)}</td></tr><tr><th>C.F.</th><td>${esc(v('strCf'))}</td></tr><tr><th>P.IVA</th><td>${esc(v('strPiva'))}</td></tr><tr><th>REA</th><td>${esc(v('strRea'))}</td></tr><tr><th>Sede</th><td>${esc(locationLine())}</td></tr><tr><th>Comune</th><td>${esc(v('strComune'))}</td></tr><tr><th>CAP</th><td>${esc(v('strCap'))}</td></tr><tr><th>Provincia</th><td>${esc(v('strProvincia'))} (${esc(v('strSiglaProv'))})</td></tr><tr><th>Regione</th><td>${esc(v('strRegione'))}</td></tr></table>
+ <h3>Soggetti inseriti</h3>${antiPeople.length?`<table><tr><th>Nome e cognome</th><th>C.F.</th><th>Nascita</th><th>Residenza</th><th>Qualità</th></tr>${antiPeople.map(p=>`<tr><td>${esc(p.nome+' '+p.cognome)}</td><td>${esc(p.cf)}</td><td>${esc(p.nascitaLuogo)} ${esc(dmy(p.nascitaData))}</td><td>${esc(p.residenza)}</td><td>${esc(p.qualita)}</td></tr>`).join('')}</table>`:'<p>Nessun soggetto inserito.</p>'}
+ <p>Verificare sul Mod. 7 ufficiale quali soggetti debbano essere indicati in relazione alla forma societaria e all’art. 85 del D.Lgs. 159/2011.</p>
+ <p>Firma del legale rappresentante ______________________________</p>${foot}`;
+ return '<p>Documento non disponibile.</p>';
+}
+function personTable(prefix,name,role){
+ return `<table><tr><th>Nome e cognome</th><td>${esc(name)}</td></tr><tr><th>Codice fiscale</th><td>${esc(v(prefix+'Cf'))}</td></tr><tr><th>Nascita</th><td>${esc(v(prefix+'NascitaLuogo'))}, ${esc(dmy(v(prefix+'NascitaData')))}</td></tr><tr><th>Residenza</th><td>${esc(v(prefix+'Res'))}</td></tr><tr><th>Qualità</th><td>${esc(role)}</td></tr></table>`;
+}
+
+function docWrapper(title,body){
+ return `<!doctype html><html><head><meta charset="utf-8"><title>${esc(title)}</title>
+ <style>body{font:12pt Arial,sans-serif;margin:24mm;color:#111}h1{font-size:17pt;text-align:center}h3{margin-top:22px}.official{text-align:center;font-weight:bold;line-height:1.35}
+ table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid #999;padding:7px;text-align:left;vertical-align:top}th{width:31%;background:#f2f2f2}.noteprint{font-size:9pt;color:#555;border-top:1px solid #bbb;padding-top:8px;margin-top:28px}</style>
+ </head><body>${body}<script>
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){
+ window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+</script></body></html>`;
+}
+function downloadDoc(kind){
+ generateTexts(); syncLRtoAnti();
+ const names={mod3:'Mod_3_compilato_CDF.doc',mod4:'Mod_4_compilato_CDF.doc',mod5:'Mod_5_compilato_CDF.doc',mod6:'Mod_6_compilato_CDF.doc',mod7:'Mod_7_compilato_CDF.doc'};
+ const body=moduleEdits[kind]||modelHtml(kind);
+ const html=docWrapper(names[kind]||'Documento',body);
+ downloadBlob(new Blob(['\ufeff',html],{type:'application/msword;charset=utf-8'}),names[kind]||'Documento_CDF.doc');
+}
+function printRegionPack(){
+ generateTexts(); syncLRtoAnti();
+ const w=window.open('','_blank'); if(!w)return alert('Abilita i popup per stampare il fascicolo.');
+ const parts=['regLetter','mod3','mod4','mod5','mod6','mod7'].map(k=>`<section class="page">${modelHtml(k)}</section>`).join('');
+ w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Fascicolo Regione CDF</title>
+ <style>body{font:11.5pt/1.42 Arial,sans-serif;color:#111;margin:0}.page{padding:15mm 17mm;page-break-after:always}.page:last-child{page-break-after:auto}
+ h1{font-size:16pt;text-align:center}.official{text-align:center;font-weight:bold;line-height:1.35}table{border-collapse:collapse;width:100%;margin:10px 0}th,td{border:1px solid #999;padding:6px;text-align:left;vertical-align:top}th{width:31%;background:#f2f2f2}.noteprint{font-size:8.5pt;color:#555;border-top:1px solid #bbb;padding-top:7px;margin-top:24px}@media print{.noteprint{display:none}}</style>
+ </head><body>${parts}<script>setTimeout(()=>window.print(),300)<\/script><script>
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){
+ window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+</script></body></html>`);w.document.close();
+}
+
+
+let currentPrintKind=null;
+function getDocumentBody(kind){
+ return moduleEdits[kind]||modelHtml(kind);
+}
+function openPrintPreview(kind){
+ if(!kind)return;
+ // If user is currently editing this document, preserve latest edits first.
+ if(currentPreviewKind===kind && q('docPreview')?.classList.contains('open')){
+   moduleEdits[kind]=q('previewPaper').innerHTML;
+   saveAll(false);
+ }
+ generateTexts();syncLRtoAnti();
+ currentPrintKind=kind;
+ q('printPreviewTitle').textContent='Anteprima stampa · '+previewTitleFor(kind);
+ q('printPreviewPaper').innerHTML=getDocumentBody(kind);
+ q('printPreview').classList.add('open');
+ q('printPreview').setAttribute('aria-hidden','false');
+ document.body.style.overflow='hidden';
+}
+function closePrintPreview(){
+ q('printPreview').classList.remove('open');
+ q('printPreview').setAttribute('aria-hidden','true');
+ currentPrintKind=null;
+ if(!q('docPreview')?.classList.contains('open')) document.body.style.overflow='';
+}
+function printableHtml(kind,body){
+ const title=previewTitleFor(kind);
+ return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>${esc(title)}</title>
+ <style>
+ @page{size:A4;margin:14mm}
+ body{font:11.5pt/1.42 Arial,sans-serif;color:#111;margin:0}
+ h1{font-size:16.5pt;text-align:center;margin:18px 0}h3{margin-top:20px}
+ .official{text-align:center;font-weight:bold;line-height:1.35}
+ table{border-collapse:collapse;width:100%;margin:10px 0}
+ th,td{border:1px solid #999;padding:6px;text-align:left;vertical-align:top}
+ th{width:31%;background:#f2f2f2}
+ .noteprint{display:none}
+ </style></head><body>${body}<script>
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){
+ window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+</script></body></html>`;
+}
+function printHtmlNow(kind,body){
+ const w=window.open('','_blank');
+ if(!w){alert('Il browser ha bloccato la finestra di stampa. Abilita i popup per questo file.');return}
+ w.document.write(printableHtml(kind,body));
+ w.document.close();
+ setTimeout(()=>{try{w.focus();w.print()}catch(e){}},450);
+}
+function printKind(kind){
+ if(!kind)return;
+ if(currentPreviewKind===kind && q('docPreview')?.classList.contains('open')){
+   moduleEdits[kind]=q('previewPaper').innerHTML;
+   saveAll(false);
+ }
+ generateTexts();syncLRtoAnti();
+ printHtmlNow(kind,getDocumentBody(kind));
+}
+function printFromPrintPreview(){
+ if(!currentPrintKind)return;
+ printHtmlNow(currentPrintKind,q('printPreviewPaper').innerHTML);
+}
+
+function previewTitleFor(kind){
+ const map={
+   aspLetter:'Comunicazione ASP Messina',
+   regLetter:'Comunicazione Regione Siciliana',
+   mod3:'Mod. 3 – Istanza variazioni organizzative',
+   mod4:'Mod. 4 – Requisiti soggettivi',
+   mod5:'Mod. 5 – Parentela / affinità',
+   mod6:'Mod. 6 – Requisiti oggettivi',
+   mod7:'Mod. 7 – Scheda dati antimafia'
+ };
+ return map[kind]||'Documento';
+}
+function printDocument(kind){
+ openPreview(kind);
+}
+function openPreview(kind){
+ generateTexts(); syncLRtoAnti();
+ currentPreviewKind=kind;
+ q('previewTitle').textContent=previewTitleFor(kind);
+ const saved=moduleEdits[kind];
+ q('previewPaper').innerHTML=saved||modelHtml(kind);
+ q('docPreview').classList.add('open');
+ q('docPreview').setAttribute('aria-hidden','false');
+ document.body.style.overflow='hidden';
+ setTimeout(()=>q('previewPaper').focus(),120);
+}
+function closePreview(){
+ q('docPreview').classList.remove('open');
+ q('docPreview').setAttribute('aria-hidden','true');
+ document.body.style.overflow='';
+ currentPreviewKind=null;
+}
+function savePreviewEdits(){
+ if(!currentPreviewKind)return;
+ moduleEdits[currentPreviewKind]=q('previewPaper').innerHTML;
+ saveAll(false);
+ toast('Modifiche del documento salvate');
+}
+function regeneratePreview(){
+ if(!currentPreviewKind)return;
+ if(moduleEdits[currentPreviewKind] && !confirm('Rigenerare il documento dai dati della pratica? Le modifiche manuali salvate per questo documento verranno sostituite.'))return;
+ delete moduleEdits[currentPreviewKind];
+ generateTexts();syncLRtoAnti();
+ q('previewPaper').innerHTML=modelHtml(currentPreviewKind);
+ saveAll(false);
+ toast('Documento rigenerato dai dati aggiornati');
+}
+function previewDocHtml(){
+ const title=previewTitleFor(currentPreviewKind);
+ return `<!doctype html><html><head><meta charset="utf-8"><title>${esc(title)}</title>
+ <style>body{font:12pt/1.45 Arial,sans-serif;color:#111;margin:18mm}h1{font-size:17pt;text-align:center;margin:20px 0}h3{margin-top:22px}.official{text-align:center;font-weight:bold;line-height:1.35}
+ table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid #aaa;padding:7px;text-align:left;vertical-align:top}th{width:31%;background:#f2f2f2}.noteprint{font-size:9pt;color:#555;border-top:1px solid #bbb;padding-top:8px;margin-top:28px}</style>
+ </head><body>${q('previewPaper').innerHTML}<script>
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){
+ window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+</script></body></html>`;
+}
+function downloadPreviewDoc(){
+ if(!currentPreviewKind)return;
+ savePreviewEdits();
+ const names={aspLetter:'Comunicazione_ASP_CDF.doc',regLetter:'Comunicazione_Regione_CDF.doc',mod3:'Mod_3_compilato_CDF.doc',mod4:'Mod_4_compilato_CDF.doc',mod5:'Mod_5_compilato_CDF.doc',mod6:'Mod_6_compilato_CDF.doc',mod7:'Mod_7_compilato_CDF.doc'};
+ downloadBlob(new Blob(['\ufeff',previewDocHtml()],{type:'application/msword;charset=utf-8'}),names[currentPreviewKind]||'Documento_CDF.doc');
+}
+function printPreview(){
+ if(!currentPreviewKind)return;
+ savePreviewEdits();
+ printKind(currentPreviewKind);
+}
+function printSummary(){
+ const w=window.open('','_blank'); if(!w)return alert('Abilita i popup.');
+ generateTexts();
+ const checked=(arr)=>arr.filter(([id])=>q(id)?.checked).map(([,t])=>`<li>${esc(t)}</li>`).join('');
+ w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Riepilogo pratica CDF</title><style>body{font:12pt Arial;margin:16mm}h1,h2{color:#0d5f6b}table{border-collapse:collapse;width:100%}td,th{border:1px solid #bbb;padding:7px;text-align:left}pre{white-space:pre-wrap;font:11pt Arial}</style></head><body>
+ <h1>Riepilogo pratica · Sostituzione Direttore Responsabile</h1>
+ <h2>Struttura</h2><table><tr><th>Denominazione</th><td>${esc(v('strDen'))}</td></tr><tr><th>Sede</th><td>${esc(locationLine())}</td></tr><tr><th>Legale rappresentante</th><td>${esc(full('lr'))}</td></tr><tr><th>Nuovo Direttore</th><td>${esc(full('dr'))}</td></tr></table>
+ <h2>ASP</h2><pre>${esc(v('aspBody'))}</pre><h3>Checklist completata</h3><ul>${checked(checklistASP)}</ul>
+ <h2>Regione</h2><pre>${esc(v('regBody'))}</pre><h3>Checklist completata</h3><ul>${checked(checklistREG)}</ul>
+ <script>setTimeout(()=>window.print(),300)<\/script><script>
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){
+ window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+</script></body></html>`); w.document.close();
+}
+
+function formData(){
+ const data={}; document.querySelectorAll('[data-save]').forEach(e=>data[e.id]=e.value);
+ const checks={}; document.querySelectorAll('[data-check]').forEach(e=>checks[e.id]=e.checked);
+ const packageChecks={}; document.querySelectorAll('[data-package-check]').forEach(e=>packageChecks[e.id]=e.checked);
+ const active=document.querySelector('#nav button.active')?.dataset.tab||'home';
+ return {version:8,data,checks,packageChecks,dispatchTarget:window.dispatchTarget||'asp',antiPeople,moduleEdits,ui:{activeTab:active},updated:new Date().toISOString()};
+}
+function applyForm(obj){
+ if(!obj)return;
+ const d=obj.data||{};
+ Object.entries(d).forEach(([id,val])=>{if(q(id))q(id).value=val});
+ // Compatibilità con versioni precedenti che avevano “Comune / Prov.” in un unico campo.
+ if(d.strCity && !d.strComune){
+   const m=String(d.strCity).match(/^\s*(.*?)\s*(?:\(([A-Za-z]{2})\))?\s*$/);
+   if(m){if(q('strComune'))q('strComune').value=m[1]||'';if(q('strSiglaProv')&&m[2])q('strSiglaProv').value=m[2].toUpperCase()}
+ }
+ Object.entries(obj.checks||{}).forEach(([id,val])=>{if(q(id))q(id).checked=!!val});
+ Object.entries(obj.packageChecks||{}).forEach(([id,val])=>{if(q(id))q(id).checked=!!val});
+ window.dispatchTarget=obj.dispatchTarget||'asp';
+ antiPeople=obj.antiPeople||[]; moduleEdits=obj.moduleEdits||{}; renderAnti(); updateSmartWidths();
+}
+async function dbSavePractice(snapshot){
+ const db=await openDB();
+ return new Promise((res,rej)=>{
+   const tx=db.transaction(PRACTICE_STORE,'readwrite');
+   tx.objectStore(PRACTICE_STORE).put({id:'current',snapshot,updated:snapshot.updated});
+   tx.oncomplete=()=>res(); tx.onerror=()=>rej(tx.error)
+ });
+}
+async function dbLoadPractice(){
+ try{
+   const db=await openDB();
+   return await new Promise((res,rej)=>{
+     const r=db.transaction(PRACTICE_STORE,'readonly').objectStore(PRACTICE_STORE).get('current');
+     r.onsuccess=()=>res(r.result?.snapshot||null);r.onerror=()=>rej(r.error)
+   });
+ }catch{return null}
+}
+function saveAll(show=true){
+ const snapshot=formData();
+ try{
+   localStorage.setItem(SAVE_KEY,JSON.stringify(snapshot));
+   setSaveStatus('saving');
+   dbSavePractice(snapshot).then(()=>{
+     setSaveStatus('saved',snapshot.updated);
+     if(show)toast('Pratica salvata automaticamente');
+   }).catch(()=>{
+     setSaveStatus('saved',snapshot.updated);
+     if(show)toast('Dati salvati nel browser; database allegati non disponibile');
+   });
+ }catch(e){
+   setSaveStatus('error');
+   if(show)alert('Salvataggio non riuscito: '+e.message)
+ }
+ return snapshot;
+}
+async function loadAll(){
+ let local=null;
+ const keys=[SAVE_KEY,...LEGACY_SAVE_KEYS];
+ for(const key of keys){
+   const raw=localStorage.getItem(key);
+   if(raw){try{local=JSON.parse(raw);break}catch{}}
+ }
+ const dbcopy=await dbLoadPractice();
+ const lt=local?.updated?Date.parse(local.updated):0, dt=dbcopy?.updated?Date.parse(dbcopy.updated):0;
+ const chosen=(dt>lt?dbcopy:local)||dbcopy;
+ if(chosen) applyForm(chosen);
+ if(!v('regDate'))q('regDate').value=todayISO();
+ generateTexts();
+ updateSmartWidths();
+ const active=chosen?.ui?.activeTab||localStorage.getItem('cdf_director_active_tab');
+ if(active && q('tab-'+active)){
+   document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('active',x.dataset.tab===active));
+   document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.id==='tab-'+active));
+ }
+ setSaveStatus('saved',chosen?.updated||new Date().toISOString());
+}
+async function resetPractice(){
+ if(!confirm('Creare una nuova pratica? Verranno cancellati i dati testuali salvati. I documenti allegati restano finché non scegli di eliminarli.'))return;
+ localStorage.removeItem(SAVE_KEY);
+ for(const k of LEGACY_SAVE_KEYS)localStorage.removeItem(k);
+ try{
+   const db=await openDB();
+   const tx=db.transaction(PRACTICE_STORE,'readwrite');tx.objectStore(PRACTICE_STORE).delete('current');
+ }catch{}
+ location.reload();
+}
+function toast(msg){
+ let t=document.createElement('div');t.textContent=msg;t.style='position:fixed;right:14px;bottom:14px;background:#14323a;color:white;padding:11px 15px;border-radius:10px;z-index:9999;box-shadow:0 6px 20px #0003';document.body.appendChild(t);setTimeout(()=>t.remove(),1800)
+}
+
+function openDB(){
+ return new Promise((resolve,reject)=>{
+   const r=indexedDB.open(DB_NAME,DB_VERSION);
+   r.onupgradeneeded=()=>{
+     if(!r.result.objectStoreNames.contains(STORE))r.result.createObjectStore(STORE,{keyPath:'id'});
+     if(!r.result.objectStoreNames.contains(PRACTICE_STORE))r.result.createObjectStore(PRACTICE_STORE,{keyPath:'id'});
+   };
+   r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)
+ });
+}
+async function dbPut(rec){const db=await openDB();return new Promise((res,rej)=>{const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).put(rec);tx.oncomplete=()=>res();tx.onerror=()=>rej(tx.error)})}
+async function dbAll(){const db=await openDB();return new Promise((res,rej)=>{const r=db.transaction(STORE).objectStore(STORE).getAll();r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+async function dbDelete(id){const db=await openDB();return new Promise((res,rej)=>{const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).delete(id);tx.oncomplete=()=>res();tx.onerror=()=>rej(tx.error)})}
+async function dbClear(){const db=await openDB();return new Promise((res,rej)=>{const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).clear();tx.oncomplete=()=>res();tx.onerror=()=>rej(tx.error)})}
+async function addFiles(files,category='standard'){
+ for(const file of files){
+   await dbPut({
+     id:crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random()),
+     name:file.name,type:file.type||'application/octet-stream',size:file.size,blob:file,
+     asp:category==='standard',reg:category==='standard',third:false,category,note:'',added:new Date().toISOString()
+   })
+ }
+ await renderFiles();saveAll(false);toast(category==='extra'?'Documenti extra salvati':'Allegati salvati localmente');
+}
+function fileRow(f,isExtra=false){
+ return `<div class="attach">
+   <div>
+     <div class="attach-title"><b>${esc(f.name)}</b><span class="attach-badge ${isExtra?'extra':''}">${isExtra?'EXTRA':'PRATICA'}</span></div>
+     <span class="small">${esc(f.type)} · ${formatBytes(f.size)}</span><br>
+     <input class="file-note" value="${esc(f.note||'')}" placeholder="${isExtra?'Descrizione / nota documento extra':'Nota documento'}" onchange="setFileMeta('${f.id}','note',this.value)">
+   </div>
+   <div class="attach-actions">
+     <label><input type="checkbox" ${f.asp?'checked':''} onchange="setFileDest('${f.id}','asp',this.checked)"> ASP</label>
+     <label><input type="checkbox" ${f.reg?'checked':''} onchange="setFileDest('${f.id}','reg',this.checked)"> Regione</label>
+     <label><input type="checkbox" ${f.third?'checked':''} onchange="setFileDest('${f.id}','third',this.checked)"> Terzo</label>
+     <button class="btn outline" onclick="downloadStored('${f.id}')">Apri</button>
+     <button class="btn outline" onclick="removeFile('${f.id}')">✕</button>
+   </div>
+ </div>`;
+}
+async function renderFiles(){
+ let files=[];
+ try{files=await dbAll()}catch(e){
+   q('attachList').innerHTML='<p class="warning">Il browser non consente l’archivio locale degli allegati in questa modalità.</p>';
+   q('extraAttachList').innerHTML='';
+   return
+ }
+ const standard=files.filter(f=>f.category!=='extra');
+ const extra=files.filter(f=>f.category==='extra');
+ q('attachList').innerHTML=standard.length?standard.map(f=>fileRow(f,false)).join(''):'<p class="small">Nessun documento principale caricato.</p>';
+ q('extraAttachList').innerHTML=extra.length?extra.map(f=>fileRow(f,true)).join(''):'<p class="small">Nessun documento extra caricato.</p>';
+}
+async function setFileDest(id,k,val){let f=(await dbAll()).find(x=>x.id===id);if(f){f[k]=val;await dbPut(f);saveAll(false);renderDispatchFiles();renderDispatchSummary()}}
+async function setFileMeta(id,k,val){let f=(await dbAll()).find(x=>x.id===id);if(f){f[k]=val;await dbPut(f);saveAll(false)}}
+async function removeFile(id){await dbDelete(id);await renderFiles();saveAll(false)}
+async function clearAttachments(){if(confirm('Eliminare tutti i documenti principali ed extra salvati in questa app?')){await dbClear();await renderFiles();saveAll(false)}}
+async function downloadStored(id){const f=(await dbAll()).find(x=>x.id===id);if(!f)return;downloadBlob(f.blob,f.name)}
+function formatBytes(n){if(n<1024)return n+' B';if(n<1048576)return (n/1024).toFixed(1)+' KB';return (n/1048576).toFixed(1)+' MB'}
+function downloadBlob(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)}
+function suggestAttachments(){
+ const text=`DOCUMENTI CONSIGLIATI
+
+ASP MESSINA
+• Atto di nomina / decisione societaria
+• Accettazione incarico del nuovo Direttore
+• Documento di identità e codice fiscale del nuovo Direttore
+• Titolo professionale, iscrizione all’Ordine e documentazione dei requisiti
+• Curriculum
+• Autorizzazione sanitaria vigente
+• Documento del legale rappresentante
+• Documentazione della cessazione del precedente Direttore, se pertinente
+
+REGIONE SICILIANA – SERVIZIO 8
+• Mod. 3
+• Mod. 4 (legale rappresentante e Direttore)
+• Mod. 5
+• Mod. 6
+• Mod. 7
+• Estremi/dichiarazione dell’autorizzazione sanitaria aggiornata ASP
+• Documenti di identità dei firmatari
+• Atto di nomina/accettazione e documentazione della variazione`;
+ downloadBlob(new Blob([text],{type:'text/plain;charset=utf-8'}),'Checklist_documenti_CDF.txt');
+}
+function arrayBufferToBase64(buf){
+ let binary='',bytes=new Uint8Array(buf),chunk=0x8000;
+ for(let i=0;i<bytes.length;i+=chunk)binary+=String.fromCharCode.apply(null,bytes.subarray(i,Math.min(i+chunk,bytes.length)));
+ return btoa(binary);
+}
+async function blobToBase64(blob){return arrayBufferToBase64(await blob.arrayBuffer())}
+async function exportArchive(){
+ saveAll(false); const files=await dbAll(); const packs=[];
+ for(const f of files)packs.push({...f,blob:undefined,data:await blobToBase64(f.blob)});
+ const payload={version:8,practice:formData(),files:packs};
+ downloadBlob(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),`CDF_pratica_direttore_${new Date().toISOString().slice(0,10)}.json`);
+ toast('Archivio completo esportato');
+}
+async function importArchiveFile(file){
+ const obj=JSON.parse(await file.text());applyForm(obj.practice||obj);saveAll(false);
+ if(obj.files){for(const f of obj.files){const bytes=Uint8Array.from(atob(f.data),c=>c.charCodeAt(0));await dbPut({...f,data:undefined,blob:new Blob([bytes],{type:f.type})})}}
+ await renderFiles();updateSmartWidths();toast('Pratica importata e salvata');
+}
+
+window.dispatchTarget=window.dispatchTarget||'asp';
+
+function dispatchGeneratedKinds(){
+ const map=[
+   ['pkgAspLetter','aspLetter','Comunicazione_ASP_CDF.doc'],
+   ['pkgRegLetter','regLetter','Comunicazione_Regione_CDF.doc'],
+   ['pkgMod3','mod3','Mod_3_compilato_CDF.doc'],
+   ['pkgMod4','mod4','Mod_4_compilato_CDF.doc'],
+   ['pkgMod5','mod5','Mod_5_compilato_CDF.doc'],
+   ['pkgMod6','mod6','Mod_6_compilato_CDF.doc'],
+   ['pkgMod7','mod7','Mod_7_compilato_CDF.doc']
+ ];
+ return map.filter(([id])=>q(id)?.checked);
+}
+function setPackageDefaults(target,force=false){
+ const ids=['pkgAspLetter','pkgRegLetter','pkgMod3','pkgMod4','pkgMod5','pkgMod6','pkgMod7','pkgSummary'];
+ if(!force && ids.some(id=>q(id)?.dataset.userTouched==='1')) return;
+ ids.forEach(id=>{if(q(id))q(id).checked=false});
+ if(target==='asp'){
+   q('pkgAspLetter').checked=true;
+   q('pkgSummary').checked=true;
+ }else if(target==='reg'){
+   ['pkgRegLetter','pkgMod3','pkgMod4','pkgMod5','pkgMod6','pkgMod7','pkgSummary'].forEach(id=>q(id).checked=true);
+ }else{
+   ['pkgAspLetter','pkgRegLetter','pkgMod3','pkgMod4','pkgMod5','pkgMod6','pkgMod7','pkgSummary'].forEach(id=>q(id).checked=true);
+ }
+}
+function setDispatchTarget(target,fromLoad=false){
+ window.dispatchTarget=target;
+ document.querySelectorAll('.dispatch-target').forEach(b=>b.classList.toggle('active',b.dataset.dispatch===target));
+ if(q('thirdRecipientCard')) q('thirdRecipientCard').style.display=target==='third'?'block':'none';
+ if(!fromLoad)setPackageDefaults(target,true);
+ renderDispatchFiles();
+ renderDispatchSummary();
+ saveAll(false);
+}
+function dispatchAddress(){
+ if(dispatchTarget==='asp')return v('aspPec');
+ if(dispatchTarget==='reg')return v('regPec');
+ return v('thirdPec');
+}
+function dispatchCc(){return dispatchTarget==='third'?v('thirdCc'):''}
+function dispatchName(){
+ if(dispatchTarget==='asp')return 'ASP Messina';
+ if(dispatchTarget==='reg')return 'Regione Siciliana – Servizio 8';
+ return v('thirdName')||'Destinatario terzo';
+}
+function dispatchSubject(){
+ if(dispatchTarget==='asp')return v('aspSubject');
+ if(dispatchTarget==='reg')return v('regSubject');
+ return v('thirdSubject');
+}
+function dispatchBody(){
+ if(dispatchTarget==='asp')return v('aspBody');
+ if(dispatchTarget==='reg')return v('regBody');
+ return v('thirdBody');
+}
+async function renderDispatchFiles(){
+ if(!q('dispatchFiles'))return;
+ let files=[];try{files=await dbAll()}catch{}
+ const key=dispatchTarget==='asp'?'asp':dispatchTarget==='reg'?'reg':'third';
+ if(!files.length){q('dispatchFiles').innerHTML='<p class="small">Nessun allegato documentale caricato.</p>';return}
+ q('dispatchFiles').innerHTML=files.map(f=>`
+  <label class="dispatch-file">
+    <input type="checkbox" ${f[key]?'checked':''} onchange="setFileDest('${f.id}','${key}',this.checked);setTimeout(()=>renderDispatchSummary(),0)">
+    <span><b>${esc(f.name)}</b><br><small>${esc(f.note||f.category||'Documento')} · ${formatBytes(f.size)}</small></span>
+    <span class="badge-dest">${f.category==='extra'?'EXTRA':'PRATICA'}</span>
+  </label>`).join('');
+}
+async function renderDispatchSummary(){
+ if(!q('dispatchSummary'))return;
+ const files=await dbAll().catch(()=>[]);
+ const key=dispatchTarget==='asp'?'asp':dispatchTarget==='reg'?'reg':'third';
+ const selectedFiles=files.filter(f=>f[key]);
+ const gen=dispatchGeneratedKinds();
+ const summary= q('pkgSummary')?.checked ? 1 : 0;
+ q('dispatchSummary').innerHTML=`
+  <b>${esc(dispatchName())}</b><br>
+  <span class="small">${esc(dispatchAddress()||'Indirizzo non inserito')}</span><br><br>
+  <b>${gen.length+summary}</b> documenti generati · <b>${selectedFiles.length}</b> allegati documentali · totale <b>${gen.length+summary+selectedFiles.length}</b> allegati previsti.`;
+}
+function summaryDocumentHtml(){
+ generateTexts();
+ return `<h1>Riepilogo pratica CDF</h1>
+ <table><tr><th>Struttura</th><td>${esc(v('strDen'))}</td></tr>
+ <tr><th>Sede</th><td>${esc(locationLine())}</td></tr>
+ <tr><th>Legale rappresentante</th><td>${esc(full('lr'))}</td></tr>
+ <tr><th>Nuovo Direttore Responsabile</th><td>${esc(full('dr'))}</td></tr>
+ <tr><th>Autorizzazione</th><td>${esc(v('authRef'))}</td></tr>
+ <tr><th>Accreditamento</th><td>${esc(v('accrRef'))}</td></tr></table>`;
+}
+function generatedAttachment(kind,name){
+ const body=moduleEdits[kind]||modelHtml(kind);
+ const html=docWrapper(name,body);
+ return {name,type:'application/msword',blob:new Blob(['\ufeff',html],{type:'application/msword;charset=utf-8'})};
+}
+function summaryAttachment(){
+ const html=docWrapper('Riepilogo pratica CDF',summaryDocumentHtml());
+ return {name:'Riepilogo_pratica_CDF.doc',type:'application/msword',blob:new Blob(['\ufeff',html],{type:'application/msword;charset=utf-8'})};
+}
+async function buildDispatchAttachments(){
+ generateTexts();syncLRtoAnti();
+ const out=dispatchGeneratedKinds().map(([,kind,name])=>generatedAttachment(kind,name));
+ if(q('pkgSummary')?.checked)out.push(summaryAttachment());
+ const files=await dbAll().catch(()=>[]);
+ const key=dispatchTarget==='asp'?'asp':dispatchTarget==='reg'?'reg':'third';
+ for(const f of files.filter(f=>f[key]))out.push({name:f.name,type:f.type||'application/octet-stream',blob:f.blob});
+ return out;
+}
+function previewDispatchMessage(){
+ const to=dispatchAddress()||'[INDIRIZZO MANCANTE]';
+ const cc=dispatchCc();
+ const text=`DESTINATARIO: ${to}${cc?'\nCC: '+cc:''}\n\nOGGETTO: ${dispatchSubject()}\n\n${dispatchBody()}`;
+ alert(text);
+}
+async function makeDispatchEmlBlob(){
+ const to=dispatchAddress(), cc=dispatchCc(), subject=dispatchSubject(), body=dispatchBody();
+ if(!to)throw new Error('Inserire l’indirizzo PEC/e-mail del destinatario.');
+ const attachments=await buildDispatchAttachments();
+ const boundary='----CDF_DISPATCH_'+Date.now()+'_'+Math.random().toString(16).slice(2);
+ let eml=`To: ${to}\r\n`;
+ if(cc)eml+=`Cc: ${cc}\r\n`;
+ eml+=`Subject: ${qpHeader(subject)}\r\nMIME-Version: 1.0\r\nContent-Type: multipart/mixed; boundary="${boundary}"\r\n\r\n`;
+ const body64=btoa(unescape(encodeURIComponent(normalizeCRLF(body))));
+ eml+=`--${boundary}\r\nContent-Type: text/plain; charset="UTF-8"\r\nContent-Transfer-Encoding: base64\r\n\r\n${(body64.match(/.{1,76}/g)||[]).join('\r\n')}\r\n`;
+ for(const a of attachments){
+   const b64=await blobToBase64(a.blob);
+   const safeName=a.name.replace(/"/g,'');
+   eml+=`--${boundary}\r\nContent-Type: ${a.type}; name="${safeName}"\r\nContent-Disposition: attachment; filename="${safeName}"\r\nContent-Transfer-Encoding: base64\r\n\r\n${(b64.match(/.{1,76}/g)||[]).join('\r\n')}\r\n`;
+ }
+ eml+=`--${boundary}--\r\n`;
+ return {blob:new Blob([eml],{type:'message/rfc822'}),attachments};
+}
+async function createDispatchEml(){
+ try{
+   const built=await makeDispatchEmlBlob();
+   const label=dispatchTarget==='asp'?'ASP':dispatchTarget==='reg'?'REGIONE':'TERZO';
+   downloadBlob(built.blob,filenameSafe(`CDF_PACCHETTO_${label}_${new Date().toISOString().slice(0,10)}.eml`));
+   toast('Pacchetto EML completo creato');
+ }catch(e){alert(e.message)}
+}
+async function shareDispatchPackage(){
+ try{
+   const attachments=await buildDispatchAttachments();
+   const shareFiles=attachments.map(a=>new File([a.blob],a.name,{type:a.type}));
+   if(navigator.canShare && navigator.canShare({files:shareFiles})){
+     await navigator.share({title:dispatchSubject(),text:dispatchBody(),files:shareFiles});
+   }else{
+     const built=await makeDispatchEmlBlob();
+     const f=new File([built.blob],'Pacchetto_CDF.eml',{type:'message/rfc822'});
+     if(navigator.canShare && navigator.canShare({files:[f]})) await navigator.share({title:dispatchSubject(),files:[f]});
+     else {
+       downloadBlob(built.blob,'Pacchetto_CDF.eml');
+       alert('La condivisione diretta dei file non è supportata da questo browser. Ho creato il file EML completo.');
+     }
+   }
+ }catch(e){if(e.name!=='AbortError')alert('Condivisione non riuscita: '+e.message)}
+}
+async function downloadDispatchIndex(){
+ const files=await dbAll().catch(()=>[]);
+ const key=dispatchTarget==='asp'?'asp':dispatchTarget==='reg'?'reg':'third';
+ const gen=dispatchGeneratedKinds().map(([,kind,name])=>name);
+ if(q('pkgSummary')?.checked)gen.push('Riepilogo_pratica_CDF.doc');
+ const docs=files.filter(f=>f[key]).map(f=>f.name);
+ const txt=`DISTINTA PACCHETTO CDF
+Destinatario: ${dispatchName()}
+Indirizzo: ${dispatchAddress()}
+Data: ${new Date().toLocaleString('it-IT')}
+
+DOCUMENTI GENERATI
+${gen.map(x=>'• '+x).join('\n')||'Nessuno'}
+
+ALLEGATI DOCUMENTALI
+${docs.map(x=>'• '+x).join('\n')||'Nessuno'}
+`;
+ downloadBlob(new Blob([txt],{type:'text/plain;charset=utf-8'}),`Distinta_pacchetto_CDF_${new Date().toISOString().slice(0,10)}.txt`);
+}
+
+function normalizeCRLF(s){return s.replace(/\r?\n/g,'\r\n')}
+function qpHeader(s){return '=?UTF-8?B?'+btoa(unescape(encodeURIComponent(s)))+'?='}
+async function downloadEml(which){
+ setDispatchTarget(which==='asp'?'asp':'reg',true);
+ if(!document.querySelector('[data-package-check]:checked'))setPackageDefaults(which==='asp'?'asp':'reg',true);
+ await createDispatchEml();
+}
+q('fileInput').addEventListener('change',e=>{addFiles([...e.target.files],'standard');e.target.value=''});
+q('extraFileInput').addEventListener('change',e=>{addFiles([...e.target.files],'extra');e.target.value=''});
+function bindDrop(id,category){
+ const zone=q(id);
+ ['dragenter','dragover'].forEach(ev=>zone.addEventListener(ev,e=>{e.preventDefault();zone.style.filter='brightness(.97)'}));
+ ['dragleave','drop'].forEach(ev=>zone.addEventListener(ev,e=>{e.preventDefault();zone.style.filter=''}));
+ zone.addEventListener('drop',e=>addFiles([...e.dataTransfer.files],category));
+}
+bindDrop('drop','standard');bindDrop('extraDrop','extra');
+[q('importArchive'),q('importArchive2')].forEach(inp=>inp.addEventListener('change',e=>{if(e.target.files[0])importArchiveFile(e.target.files[0])}));
+
+function handleDataEdit(e){
+ if(!e.target.matches('[data-save]'))return;
+ if(['lrNome','lrCognome','lrCf','lrNascitaLuogo','lrNascitaData','lrRes'].includes(e.target.id))syncLRtoAnti();
+ if(e.target.matches('[data-smart-size]'))updateSmartWidths();
+ if(e.target.id==='authRef')e.target.dataset.manualOverride='1';
+ if(e.target.id==='accrRef')e.target.dataset.manualOverride='1';
+ if(['aspBody','regBody','aspSubject','regSubject'].includes(e.target.id))markManual();
+ else generateTexts();
+ clearTimeout(window._saveT);window._saveT=setTimeout(()=>saveAll(false),180);
+}
+document.addEventListener('input',handleDataEdit);
+
+document.addEventListener('change',e=>{
+ if(e.target.matches('[data-package-check]')){
+   e.target.dataset.userTouched='1';
+   saveAll(false);renderDispatchSummary();
+ }
+});
+
+document.addEventListener('change',handleDataEdit);
+window.addEventListener('pagehide',()=>saveAll(false));
+window.addEventListener('beforeunload',()=>saveAll(false));
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')saveAll(false)});
+setInterval(()=>saveAll(false),15000);
+window.addEventListener('resize',updateSmartWidths);
+
+
+q('previewPaper').addEventListener('input',()=>{
+ if(!currentPreviewKind)return;
+ clearTimeout(window._previewSaveT);
+ window._previewSaveT=setTimeout(()=>{
+   moduleEdits[currentPreviewKind]=q('previewPaper').innerHTML;
+   saveAll(false);
+ },500);
+});
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape'){
+   if(q('printPreview')?.classList.contains('open'))closePrintPreview();
+   else if(q('docPreview')?.classList.contains('open'))closePreview();
+ }
+});
+
+async function initApp(){
+ enableAppModeImmediately();
+ updateAppModeStatus();
+ installSilentFullscreenFallback();
+ renderChecklists();renderModules();
+ await loadAll();
+ await renderFiles();
+ if(!antiPeople.length){syncLRtoAnti();renderAnti();saveAll(false)}
+ updateSmartWidths();
+ setDispatchTarget(window.dispatchTarget||'asp',true);
+ if(!document.querySelector('[data-package-check]:checked'))setPackageDefaults(window.dispatchTarget||'asp',true);
+ renderDispatchFiles();renderDispatchSummary();
+ requestPersistentStorage(false);
+}
+initApp();
+</script>
+<script>
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){
+ window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+</script></body>
+</html>
